@@ -1,4 +1,4 @@
-package com.me.squad.newproject;
+package com.me.squad.newproject.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.me.squad.newproject.R;
 import com.me.squad.newproject.model.Account;
 
 import java.util.List;
