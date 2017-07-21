@@ -3,7 +3,8 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background_color">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/accounts_recycler_view"
@@ -22,9 +23,10 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         fab:menu_fab_label="@string/menu_fab_label"
         fab:menu_colorNormal="@color/colorPrimary"
-        fab:menu_colorPressed="@color/fab_menu_colorPressed"
-        fab:menu_labels_colorNormal="#333333"
-        fab:menu_labels_colorPressed="#444444"
+        fab:menu_colorPressed="@color/colorPrimaryDark"
+        fab:menu_labels_colorNormal="@color/fab_menu_color_labels"
+        fab:menu_labels_colorPressed="@color/fab_menu_color_labels"
+        fab:menu_labels_textColor="@color/fab_menu_color_text_labels"
         fab:menu_labels_position="left"
         fab:menu_openDirection="up"
         fab:menu_labels_ellipsize="end"
