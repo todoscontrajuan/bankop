@@ -16,20 +16,20 @@ import java.util.List;
  */
 
 public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyViewHolder>{
-    private List<Account> accountList;
+    private List<Account> accountsList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView accountName, balance;
+        public TextView accountName, accountBalance;
 
         public MyViewHolder(View view) {
             super(view);
             accountName = (TextView) view.findViewById(R.id.account_name);
-            balance = (TextView) view.findViewById(R.id.balance);
+            accountBalance = (TextView) view.findViewById(R.id.account_balance);
         }
     }
 
-    public AccountsAdapter(List<Account> accountList) {
-        this.accountList = accountList;
+    public AccountsAdapter(List<Account> accountsList) {
+        this.accountsList = accountsList;
     }
 
     @Override
@@ -42,13 +42,13 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Account account = accountList.get(position);
+        Account account = accountsList.get(position);
         holder.accountName.setText(account.getAccountName());
-        holder.balance.setText(account.getBalance() + "");
+        holder.accountBalance.setText(String.valueOf(account.getAccountBalance()));
     }
 
     @Override
     public int getItemCount() {
-        return accountList.size();
+        return accountsList.size();
     }
 }

@@ -7,49 +7,50 @@ import java.util.Date;
  */
 
 public class Transaction {
-    int amount;
-    Date date;
-    String Note;
-    TransactionType transactiontype;
-    Account account;
 
-    public int getAmount() {
-        return amount;
+    private int transactionAmount;
+    private Date transactionDate;
+    private String transactionNote;
+    private TransactionType transactionType;
+    private Account transactionAccount;
+
+    public int getTransactionAmount() {
+        return transactionAmount;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setTransactionAmount(int transactionAmount) {
+        this.transactionAmount = transactionAmount;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getTransactionDate() {
+        return transactionDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
     }
 
-    public String getNote() {
-        return Note;
+    public String getTransactionNote() {
+        return transactionNote;
     }
 
-    public void setNote(String note) {
-        Note = note;
+    public void setTransactionNote(String transactionNote) {
+        this.transactionNote = transactionNote;
     }
 
-    public TransactionType getTransactiontype() {
-        return transactiontype;
+    public TransactionType getTransactionType() {
+        return transactionType;
     }
 
-    public void setTransactiontype(TransactionType transactiontype) {
-        this.transactiontype = transactiontype;
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
     }
 
-    public Account getAccount() {
-        return account;
+    public Account getTransactionAccount() {
+        return transactionAccount;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setTransactionAccount(Account transactionAccount) {
+        this.transactionAccount = transactionAccount;
     }
 }

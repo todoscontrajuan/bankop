@@ -5,8 +5,8 @@ package com.me.squad.newproject.model;
  */
 
 public class Account {
-    String accountName;
-    int balance;
+    private String accountName;
+    private int accountBalance;
 
     public String getAccountName() {
         return accountName;
@@ -16,11 +16,11 @@ public class Account {
         this.accountName = accountName;
     }
 
-    public int getBalance() {
-        return balance;
+    public int getAccountBalance() {
+        return accountBalance;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
+    public void setAccountBalance(int accountBalance) {
+        this.accountBalance = accountBalance;
     }
 }
