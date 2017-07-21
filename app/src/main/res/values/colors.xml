@@ -6,8 +6,4 @@
     <color name="fab_menu_colorPressed">#1976d2</color>
     <color name="fab_accounts_color">#1e88e5</color>
     <color name="fab_accounts_colorPressed">#2196f3</color>
-    <color name="fab_expenses_color">#e53935</color>
-    <color name="fab_expenses_colorPressed">#f44336</color>
-    <color name="fab_incomes_color">#43a047</color>
-    <color name="fab_incomes_colorPressed">#4caf50</color>
 </resources>

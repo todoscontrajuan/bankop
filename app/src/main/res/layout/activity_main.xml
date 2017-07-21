@@ -31,24 +31,14 @@
         fab:menu_labels_singleLine="true">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_expenses"
+            android:id="@+id/fab_records"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_upward_black_24dp"
-            fab:fab_label="@string/menu_fab_label_expenses"
+            android:src="@drawable/ic_edit_black_24dp"
+            fab:fab_label="@string/menu_fab_label_transactions"
             fab:fab_size="mini"
-            fab:fab_colorNormal="@color/fab_expenses_color"
-            fab:fab_colorPressed="@color/fab_expenses_colorPressed"/>
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_incomes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_downward_black_24dp"
-            fab:fab_label="@string/menu_fab_label_incomes"
-            fab:fab_size="mini"
-            fab:fab_colorNormal="@color/fab_incomes_color"
-            fab:fab_colorPressed="@color/fab_incomes_colorPressed"/>
+            fab:fab_colorNormal="@color/fab_accounts_color"
+            fab:fab_colorPressed="@color/fab_accounts_colorPressed"/>
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_transfers"

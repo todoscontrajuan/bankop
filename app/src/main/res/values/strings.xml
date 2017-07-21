@@ -2,7 +2,6 @@
     <string name="app_name">Vigilante de gastos</string>
     <string name="menu_fab_label">¿Qué quieres agregar?</string>
     <string name="menu_fab_label_accounts">Cuenta</string>
-    <string name="menu_fab_label_expenses">Gasto</string>
-    <string name="menu_fab_label_incomes">Ingreso</string>
+    <string name="menu_fab_label_transactions">Transacción</string>
     <string name="menu_fab_label_transfers">Transferencia</string>
 </resources>
