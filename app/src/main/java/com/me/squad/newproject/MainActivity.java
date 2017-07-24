@@ -24,18 +24,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         accountsRecyclerView = (RecyclerView) findViewById(R.id.accounts_recycler_view);
-        accountsAdapter = new AccountsAdapter(accountsList);
+        accountsAdapter = new AccountsAdapter(getApplicationContext(), accountsList);
         accountsRecyclerView.setAdapter(accountsAdapter);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         accountsRecyclerView.setLayoutManager(mLayoutManager);
 
         if(mockDate) {
-            Account a = new Account();
-            a.setAccountName("Test A");
-            a.setAccountBalance(2000);
+            Account a, b, c;
+            a = new Account();
+            b = new Account();
+            c = new Account();
+            a.setAccountName("Efectivo");
+            a.setAccountBalance(500.70);
             accountsList.add(a);
-            accountsList.add(a);
-            accountsList.add(a);
+            b.setAccountName("Debito");
+            b.setAccountBalance(7350.51);
+            accountsList.add(b);
+            c.setAccountName("Plazo fijo");
+            c.setAccountBalance(5000);
+            accountsList.add(c);
         } else {
             // TODO Real data!!!
         }

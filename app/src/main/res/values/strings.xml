@@ -4,4 +4,7 @@
     <string name="menu_fab_label_accounts">Cuenta</string>
     <string name="menu_fab_label_transactions">Transacción</string>
     <string name="menu_fab_label_transfers">Transferencia</string>
+    <string name="see_transactions">Ver transacciones</string>
+    <string name="edit_account">Edit</string>
+    <string name="delete_account">Delete</string>
 </resources>

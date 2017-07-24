@@ -8,17 +8,17 @@ import java.util.Date;
 
 public class Transaction {
 
-    private int transactionAmount;
+    private double transactionAmount;
     private Date transactionDate;
     private String transactionNote;
     private TransactionType transactionType;
     private Account transactionAccount;
 
-    public int getTransactionAmount() {
+    public double getTransactionAmount() {
         return transactionAmount;
     }
 
-    public void setTransactionAmount(int transactionAmount) {
+    public void setTransactionAmount(double transactionAmount) {
         this.transactionAmount = transactionAmount;
     }
 

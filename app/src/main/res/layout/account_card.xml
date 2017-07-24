@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -10,24 +11,51 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/card_margin">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/account_name"/>
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/account_balance"
-                android:layout_marginStart="8dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_name"
+                    tools:text="Efectivo"/>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_balance"
+                    android:textSize="@dimen/amount_card_text_size"
+                    android:textColor="@color/amount_card_text_color"
+                    tools:text="$2000.00"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/see_transactions"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:padding="@dimen/button_padding"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/overflow"
+                android:layout_width="@dimen/ic_account_overflow_width"
+                android:layout_height="@dimen/ic_account_overflow_height"
+                android:layout_marginTop="@dimen/ic_account_overflow_margin_top"
+                android:layout_marginRight="@dimen/ic_account_overflow_margin_right"
+                android:layout_alignParentRight="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_more_vert_black_24dp" />
+
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 

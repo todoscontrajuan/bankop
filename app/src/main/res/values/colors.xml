@@ -8,4 +8,5 @@
     <color name="fab_accounts_colorPressed">#00bcd4</color>
     <color name="fab_menu_color_labels">#37474f</color>
     <color name="fab_menu_color_text_labels">#ffffff</color>
+    <color name="amount_card_text_color">#000000</color>
 </resources>
