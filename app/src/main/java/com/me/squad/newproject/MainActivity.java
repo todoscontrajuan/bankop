@@ -15,7 +15,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView accountsRecyclerView;
-    private Button seeTransactionsButton;
     private List<Account> accountsList = new ArrayList<>();
     private boolean mockDate = true;
 

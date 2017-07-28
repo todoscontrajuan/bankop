@@ -31,12 +31,14 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView accountName, accountBalance;
         public ImageView overflow;
+        public Button seeTransactions;
 
         public MyViewHolder(View view) {
             super(view);
             accountName = (TextView) view.findViewById(R.id.account_name);
             accountBalance = (TextView) view.findViewById(R.id.account_balance);
             overflow = (ImageView) view.findViewById(R.id.overflow);
+            seeTransactions = (Button) itemView.findViewById(R.id.see_transactions);
         }
     }
 
@@ -49,15 +51,6 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.account_card, parent, false);
-        Button seeTransactionsButton = (Button) itemView.findViewById(R.id.see_transactions);
-        seeTransactionsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(mContext, TransactionListActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(i);
-            }
-        });
 
         return new MyViewHolder(itemView);
     }
@@ -67,6 +60,15 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
         Account account = accountsList.get(position);
         holder.accountName.setText(account.getAccountName());
         holder.accountBalance.setText("$" + String.format("%.2f", account.getAccountBalance()));
+
+        holder.seeTransactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(mContext, TransactionListActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(i);
+            }
+        });
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
