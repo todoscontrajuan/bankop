@@ -12,7 +12,8 @@ public class Transaction {
     private Date transactionDate;
     private String transactionNote;
     private TransactionType transactionType;
-    private Account transactionAccount;
+    private Account transactionSourceAccount;
+    private Account transactionDestinationAccount;
 
     public double getTransactionAmount() {
         return transactionAmount;
@@ -46,11 +47,19 @@ public class Transaction {
         this.transactionType = transactionType;
     }
 
-    public Account getTransactionAccount() {
-        return transactionAccount;
+    public Account getTransactionSourceAccount() {
+        return transactionSourceAccount;
     }
 
-    public void setTransactionAccount(Account transactionAccount) {
-        this.transactionAccount = transactionAccount;
+    public void setTransactionSourceAccount(Account transactionSourceAccount) {
+        this.transactionSourceAccount = transactionSourceAccount;
+    }
+
+    public Account getTransactionDestinationAccount() {
+        return transactionDestinationAccount;
+    }
+
+    public void setTransactionDestinationAccount(Account transactionDestinationAccount) {
+        this.transactionDestinationAccount = transactionDestinationAccount;
     }
 }

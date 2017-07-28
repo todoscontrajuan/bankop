@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
 
 import com.me.squad.newproject.adapter.AccountsAdapter;
 import com.me.squad.newproject.model.Account;
@@ -14,7 +15,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView accountsRecyclerView;
-    private AccountsAdapter accountsAdapter;
+    private Button seeTransactionsButton;
     private List<Account> accountsList = new ArrayList<>();
     private boolean mockDate = true;
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         accountsRecyclerView = (RecyclerView) findViewById(R.id.accounts_recycler_view);
-        accountsAdapter = new AccountsAdapter(getApplicationContext(), accountsList);
+        AccountsAdapter accountsAdapter = new AccountsAdapter(getApplicationContext(), accountsList);
         accountsRecyclerView.setAdapter(accountsAdapter);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         accountsRecyclerView.setLayoutManager(mLayoutManager);

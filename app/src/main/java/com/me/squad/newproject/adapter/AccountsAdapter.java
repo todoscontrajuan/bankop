@@ -1,6 +1,8 @@
 package com.me.squad.newproject.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
 import android.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.me.squad.newproject.R;
+import com.me.squad.newproject.TransactionListActivity;
 import com.me.squad.newproject.model.Account;
 
 import java.util.List;
@@ -46,6 +49,15 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.account_card, parent, false);
+        Button seeTransactionsButton = (Button) itemView.findViewById(R.id.see_transactions);
+        seeTransactionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(mContext, TransactionListActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(i);
+            }
+        });
 
         return new MyViewHolder(itemView);
     }
