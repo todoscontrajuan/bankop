@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- MainActivity values -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="recycler_view_margin">8dp</dimen>
+
+    <!-- Account Card values -->
     <dimen name="card_margin">4dp</dimen>
     <dimen name="card_padding">16dp</dimen>
     <dimen name="card_corner_radius">3dp</dimen>
@@ -10,4 +15,10 @@
     <dimen name="ic_account_overflow_height">30dp</dimen>
     <dimen name="ic_account_overflow_margin_top">16dp</dimen>
     <dimen name="ic_account_overflow_margin_right">8dp</dimen>
+
+    <!-- Transaction List values -->
+    <dimen name="circle_image_dimens">25dp</dimen>
+    <dimen name="margin_top_texts">8dp</dimen>
+    <dimen name="margin_left_amount">16dp</dimen>
+    <dimen name="amount_transaction_list_text_size">24sp</dimen>
 </resources>

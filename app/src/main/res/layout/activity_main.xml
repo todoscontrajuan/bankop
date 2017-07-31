@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:layout_margin="8dp"/>
+        android:layout_margin="@dimen/recycler_view_margin"/>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/fab_menu"
