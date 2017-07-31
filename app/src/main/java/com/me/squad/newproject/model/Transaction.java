@@ -9,7 +9,7 @@ import java.util.Date;
 public class Transaction {
 
     private double transactionAmount;
-    private Date transactionDate;
+    private long transactionDateInMilliseconds;
     private String transactionNote;
     private TransactionType transactionType;
     private Account transactionSourceAccount;
@@ -23,12 +23,12 @@ public class Transaction {
         this.transactionAmount = transactionAmount;
     }
 
-    public Date getTransactionDate() {
-        return transactionDate;
+    public long getTransactionDateInMilliseconds() {
+        return transactionDateInMilliseconds;
     }
 
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
+    public void setTransactionDateInMilliseconds(long transactionDateInMilliseconds) {
+        this.transactionDateInMilliseconds = transactionDateInMilliseconds;
     }
 
     public String getTransactionNote() {

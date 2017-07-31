@@ -9,5 +9,7 @@
     <color name="fab_menu_color_labels">#37474f</color>
     <color name="fab_menu_color_text_labels">#ffffff</color>
     <color name="amount_card_text_color">#000000</color>
-    <color name="expense">#e53935</color>
+    <color name="expense_color">#e53935</color>
+    <color name="income_color">#43a047</color>
+    <color name="transactions_list_text_color">#455a64</color>
 </resources>

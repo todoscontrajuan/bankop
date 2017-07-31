@@ -1,57 +1,95 @@
 package com.me.squad.newproject.adapter;
 
-import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.me.squad.newproject.R;
 import com.me.squad.newproject.model.Transaction;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by jrodriguez on 7/18/17.
  */
 
-public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapter.MyViewHolder> {
+public class TransactionsAdapter extends ArrayAdapter<Transaction> {
 
-    private List<Transaction> transactionsList;
+    private Context mContext;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView transactionNote, transactionAmount;
+    public TransactionsAdapter(Context context, ArrayList<Transaction> transactions) {
+        super(context, 0, transactions);
+        mContext = context;
+    }
 
-        public MyViewHolder(View view) {
-            super(view);
-            transactionNote = (TextView) view.findViewById(R.id.note);
-            transactionAmount = (TextView) view.findViewById(R.id.amount);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // Check if an existing view is being reused, otherwise inflate the view
+        View listItemView = convertView;
+        if (listItemView == null) {
+            listItemView = LayoutInflater.from(getContext()).inflate(
+                    R.layout.transaction_element, parent, false);
         }
+
+        Transaction currentTransaction = getItem(position);
+
+        // Transaction type
+        CircleImageView imageView = (CircleImageView) listItemView.findViewById(R.id.transaction_type_image);
+        setTransactionType(imageView, currentTransaction);
+
+        // Amount
+        TextView transactionAmount = (TextView) listItemView.findViewById(R.id.transaction_amount);
+        transactionAmount.setText("$" + String.format("%.2f", currentTransaction.getTransactionAmount()));
+
+        // Note
+        TextView transactionNote = (TextView) listItemView.findViewById(R.id.transaction_note);
+        transactionNote.setText(currentTransaction.getTransactionNote());
+
+        // Date
+        Date dateObject = new Date(currentTransaction.getTransactionDateInMilliseconds());
+        TextView transactionDate = (TextView) listItemView.findViewById(R.id.transaction_date);
+        String formattedTime = formatTime(dateObject);
+        transactionDate.setText(formattedTime);
+
+
+        return listItemView;
     }
 
-    public TransactionsAdapter(List<Transaction> transactionsList) {
-        this.transactionsList = transactionsList;
+    private void setTransactionType(ImageView imageView, Transaction currentTransaction) {
+        Drawable color = null;
+        Drawable image = null;
+        switch (currentTransaction.getTransactionType()) {
+            case INCOME:
+                color = new ColorDrawable(mContext.getResources().getColor(R.color.income_color));
+                image = mContext.getResources().getDrawable(R.drawable.ic_arrow_downward_black_24dp);
+                break;
+            case EXPENSE:
+                color = new ColorDrawable(mContext.getResources().getColor(R.color.expense_color));
+                image = mContext.getResources().getDrawable(R.drawable.ic_arrow_upward_black_24dp);
+                break;
+            case TRANSFER:
+                color = new ColorDrawable(mContext.getResources().getColor(R.color.fab_accounts_color));
+                image = mContext.getResources().getDrawable(R.drawable.ic_compare_arrows_black_24dp);
+                break;
+        }
+        LayerDrawable ld = new LayerDrawable(new Drawable[]{color, image});
+        imageView.setImageDrawable(ld);
     }
 
-    @Override
-    public TransactionsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.transaction_element, parent, false);
-
-        return new TransactionsAdapter.MyViewHolder(itemView);
+    private String formatTime(Date dateObject) {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        return timeFormat.format(dateObject);
     }
 
-    @Override
-    public void onBindViewHolder(final TransactionsAdapter.MyViewHolder holder, int position) {
-        Transaction transaction = transactionsList.get(position);
-        holder.transactionNote.setText(transaction.getTransactionNote());
-        holder.transactionAmount.setText(String.valueOf(transaction.getTransactionNote()));
-    }
-
-    @Override
-    public int getItemCount() {
-        return transactionsList.size();
-    }
 }

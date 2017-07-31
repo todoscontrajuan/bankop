@@ -12,20 +12,22 @@
         android:layout_centerInParent="true"
         android:layout_alignParentStart="true"
         tools:src="@drawable/ic_arrow_upward_black_24dp"
-        tools:background="@color/expense" />
+        tools:background="@color/expense_color" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_toRightOf="@id/transaction_type_image"
-        android:layout_marginStart="@dimen/margin_left_amount">
+        android:layout_marginStart="@dimen/margin_left_amount"
+        android:layout_marginBottom="@dimen/margin_top_texts">
 
         <TextView
             android:id="@+id/transaction_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/amount_transaction_list_text_size"
+            android:textColor="@color/amount_card_text_color"
             android:layout_marginTop="@dimen/margin_top_texts"
             tools:text="$2000.00"/>
 
@@ -33,7 +35,8 @@
             android:id="@+id/transaction_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_texts"
+            android:textColor="@color/transactions_list_text_color"
+            android:layout_marginStart="4dp"
             tools:text="This was an expense of something."/>
 
     </LinearLayout>
@@ -46,6 +49,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="@dimen/margin_top_texts"
+        android:textColor="@color/transactions_list_text_color"
         tools:text="7/7/17 11:53PM" />
 
 </RelativeLayout>
