@@ -57,7 +57,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Account account = accountsList.get(position);
+        final Account account = accountsList.get(position);
         holder.accountName.setText(account.getAccountName());
         holder.accountBalance.setText("$" + String.format("%.2f", account.getAccountBalance()));
 
@@ -66,6 +66,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
             public void onClick(View view) {
                 Intent i = new Intent(mContext, TransactionListActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.putExtra("currentAccount", account);
                 mContext.startActivity(i);
             }
         });

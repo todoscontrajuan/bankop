@@ -1,10 +1,12 @@
 package com.me.squad.newproject.model;
 
+import java.io.Serializable;
+
 /**
  * Created by juan_ on 06/07/2017.
  */
 
-public class Account {
+public class Account implements Serializable {
     private String accountName;
     private double accountBalance;
 
