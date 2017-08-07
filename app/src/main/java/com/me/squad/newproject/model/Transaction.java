@@ -1,12 +1,13 @@
 package com.me.squad.newproject.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by juan_ on 06/07/2017.
  */
 
-public class Transaction {
+public class Transaction implements Serializable {
 
     private double transactionAmount;
     private long transactionDateInMilliseconds;

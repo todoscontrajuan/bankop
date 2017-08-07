@@ -12,4 +12,5 @@
     <color name="expense_color">#e53935</color>
     <color name="income_color">#43a047</color>
     <color name="transactions_list_text_color">#455a64</color>
+    <color name="transaction_elements_background_color">#ffffff</color>
 </resources>

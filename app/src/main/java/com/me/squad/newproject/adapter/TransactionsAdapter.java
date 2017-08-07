@@ -1,6 +1,7 @@
 package com.me.squad.newproject.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.me.squad.newproject.R;
+import com.me.squad.newproject.TransactionDetailsActivity;
 import com.me.squad.newproject.model.Transaction;
 
 import java.text.SimpleDateFormat;
@@ -42,7 +44,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
                     R.layout.transaction_element, parent, false);
         }
 
-        Transaction currentTransaction = getItem(position);
+        final Transaction currentTransaction = getItem(position);
 
         // Transaction type
         CircleImageView imageView = (CircleImageView) listItemView.findViewById(R.id.transaction_type_image);
@@ -62,6 +64,15 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
         String formattedTime = formatTime(dateObject);
         transactionDate.setText(formattedTime);
 
+        listItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(mContext, TransactionDetailsActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.putExtra("currentTransaction", currentTransaction);
+                mContext.startActivity(i);
+            }
+        });
 
         return listItemView;
     }

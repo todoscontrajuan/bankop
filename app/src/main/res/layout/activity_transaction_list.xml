@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.me.squad.newproject.TransactionListActivity">
+    tools:context="com.me.squad.newproject.TransactionListActivity"
+    android:background="@color/background_color">
 
     <ListView
         android:id="@+id/transactions_list_view"

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Common values -->
+    <dimen name="margin_normal_texts">8dp</dimen>
+    <dimen name="margin_big_texts">16dp</dimen>
 
     <!-- MainActivity values -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -18,7 +21,10 @@
 
     <!-- Transaction List values -->
     <dimen name="circle_image_dimens">25dp</dimen>
-    <dimen name="margin_top_texts">8dp</dimen>
-    <dimen name="margin_left_amount">16dp</dimen>
     <dimen name="amount_transaction_list_text_size">24sp</dimen>
+
+    <!-- Transaction details values -->
+    <dimen name="circle_image_dimens_transaction_details">40dp</dimen>
+    <dimen name="buttons_margin_transaction_details">20dp</dimen>
+
 </resources>
