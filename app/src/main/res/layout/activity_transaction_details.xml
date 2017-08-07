@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.me.squad.newproject.TransactionDetailsActivity">
+    tools:context="com.me.squad.newproject.TransactionDetailsActivity"
+    android:orientation="vertical"
+    android:background="@color/background_color">
 
-</android.support.constraint.ConstraintLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/transaction_type_image_details"
+        android:layout_width="@dimen/circle_image_dimens_transaction_details"
+        android:layout_height="@dimen/circle_image_dimens_transaction_details"
+        android:layout_marginTop="@dimen/margin_big_texts"
+        android:layout_gravity="center_horizontal"
+        tools:src="@drawable/ic_arrow_upward_black_24dp"
+        tools:background="@color/expense_color" />
+
+    <TextView
+        android:id="@+id/transaction_amount_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_big_texts"
+        android:textSize="@dimen/amount_card_text_size"
+        tools:text="$2000.00"/>
+
+    <TextView
+        android:id="@+id/transaction_note_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_big_texts"
+        android:paddingStart="@dimen/margin_normal_texts"
+        android:paddingEnd="@dimen/margin_normal_texts"
+        tools:text="Something longer because this is a note and it needs to be longer"/>
+
+    <TextView
+        android:id="@+id/transaction_date_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_normal_texts"
+        android:paddingStart="@dimen/margin_normal_texts"
+        android:paddingEnd="@dimen/margin_normal_texts"
+        tools:text="7/7/17 13:33"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/margin_normal_texts"
+        android:paddingStart="@dimen/margin_normal_texts"
+        android:paddingEnd="@dimen/margin_normal_texts">
+
+        <TextView
+            android:id="@+id/account_origin_transaction_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="Efectivo"/>
+
+        <TextView
+            android:id="@+id/account_destination_transaction_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone"
+            tools:text="Debito"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/margin_big_texts"
+        android:paddingStart="@dimen/margin_normal_texts"
+        android:paddingEnd="@dimen/margin_normal_texts"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/edit_transaction_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_account"
+            android:layout_marginEnd="@dimen/buttons_margin_transaction_details"/>
+
+        <Button
+            android:id="@+id/delete_transaction_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_account"
+            android:layout_marginStart="@dimen/buttons_margin_transaction_details"/>
+
+    </LinearLayout>
+
+</LinearLayout>
