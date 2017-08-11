@@ -33,6 +33,7 @@ public class TransactionListActivity extends AppCompatActivity {
             Date date = new Date();
             a.setTransactionDateInMilliseconds(date.getTime());
             a.setTransactionType(TransactionType.EXPENSE);
+            a.setTransactionSourceAccount(account);
             transactionsList.add(a);
 
             Transaction b = new Transaction();
@@ -40,7 +41,19 @@ public class TransactionListActivity extends AppCompatActivity {
             b.setTransactionNote("Hola this is a long thing to see how the note is behaving with a long text");
             b.setTransactionDateInMilliseconds(date.getTime());
             b.setTransactionType(TransactionType.INCOME);
+            b.setTransactionSourceAccount(account);
             transactionsList.add(b);
+
+            Transaction c = new Transaction();
+            c.setTransactionAmount(500);
+            c.setTransactionNote("Transfer test");
+            c.setTransactionDateInMilliseconds(date.getTime());
+            c.setTransactionType(TransactionType.TRANSFER);
+            c.setTransactionSourceAccount(account);
+            Account d = new Account();
+            d.setAccountName("Dolares");
+            c.setTransactionDestinationAccount(d);
+            transactionsList.add(c);
         } else {
             // TODO Search in the database for the transactions for this account
         }

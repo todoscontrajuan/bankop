@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.me.squad.newproject.R;
 import com.me.squad.newproject.TransactionDetailsActivity;
 import com.me.squad.newproject.model.Transaction;
+import com.me.squad.newproject.utils.GeneralUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
         // Date
         Date dateObject = new Date(currentTransaction.getTransactionDateInMilliseconds());
         TextView transactionDate = (TextView) listItemView.findViewById(R.id.transaction_date);
-        String formattedTime = formatTime(dateObject);
+        String formattedTime = GeneralUtils.formatTime(dateObject);
         transactionDate.setText(formattedTime);
 
         listItemView.setOnClickListener(new View.OnClickListener() {
@@ -96,11 +97,6 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
         }
         LayerDrawable ld = new LayerDrawable(new Drawable[]{color, image});
         imageView.setImageDrawable(ld);
-    }
-
-    private String formatTime(Date dateObject) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-        return timeFormat.format(dateObject);
     }
 
 }

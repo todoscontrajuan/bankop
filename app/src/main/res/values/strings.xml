@@ -7,4 +7,6 @@
     <string name="see_transactions">Ver transacciones</string>
     <string name="edit_account">Edit</string>
     <string name="delete_account">Delete</string>
+    <string name="source_account">Source</string>
+    <string name="destination_account">Destination</string>
 </resources>

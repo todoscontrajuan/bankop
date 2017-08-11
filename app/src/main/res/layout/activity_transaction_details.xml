@@ -32,6 +32,8 @@
         android:layout_marginTop="@dimen/margin_big_texts"
         android:paddingStart="@dimen/margin_normal_texts"
         android:paddingEnd="@dimen/margin_normal_texts"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
         tools:text="Something longer because this is a note and it needs to be longer"/>
 
     <TextView
@@ -41,6 +43,8 @@
         android:paddingTop="@dimen/margin_normal_texts"
         android:paddingStart="@dimen/margin_normal_texts"
         android:paddingEnd="@dimen/margin_normal_texts"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
         tools:text="7/7/17 13:33"/>
 
     <LinearLayout
@@ -52,10 +56,13 @@
         android:paddingEnd="@dimen/margin_normal_texts">
 
         <TextView
-            android:id="@+id/account_origin_transaction_details"
+            android:id="@+id/account_source_transaction_details"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="@string/source_account"
+            android:layout_marginStart="16dp"
             tools:text="Efectivo"/>
 
         <TextView
@@ -64,6 +71,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:visibility="gone"
+            android:textStyle="bold"
+            android:text="@string/destination_account"
+            android:layout_marginStart="16dp"
             tools:text="Debito"/>
 
     </LinearLayout>
