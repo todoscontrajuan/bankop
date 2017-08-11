@@ -5,8 +5,8 @@
     <string name="menu_fab_label_transactions">Transacción</string>
     <string name="menu_fab_label_transfers">Transferencia</string>
     <string name="see_transactions">Ver transacciones</string>
-    <string name="edit_account">Edit</string>
-    <string name="delete_account">Delete</string>
-    <string name="source_account">Source</string>
-    <string name="destination_account">Destination</string>
+    <string name="edit_account">Editar</string>
+    <string name="delete_account">Eliminar</string>
+    <string name="source_account">Origen</string>
+    <string name="destination_account">Destino</string>
 </resources>
