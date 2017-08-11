@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.me.squad.newproject.TransactionDetailsActivity"
-    android:orientation="vertical"
-    android:background="@color/background_color">
+    android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/transaction_type_image_details"
@@ -82,24 +81,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/margin_big_texts"
+        android:paddingTop="@dimen/margin_big_big_texts"
         android:paddingStart="@dimen/margin_normal_texts"
         android:paddingEnd="@dimen/margin_normal_texts"
         android:gravity="center">
 
         <Button
             android:id="@+id/edit_transaction_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
             android:text="@string/edit_account"
-            android:layout_marginEnd="@dimen/buttons_margin_transaction_details"/>
+            android:layout_marginEnd="@dimen/buttons_margin_transaction_details"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/transaction_elements_background_color"/>
 
         <Button
             android:id="@+id/delete_transaction_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
             android:text="@string/delete_account"
-            android:layout_marginStart="@dimen/buttons_margin_transaction_details"/>
+            android:layout_marginStart="@dimen/buttons_margin_transaction_details"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/transaction_elements_background_color"/>
 
     </LinearLayout>
 

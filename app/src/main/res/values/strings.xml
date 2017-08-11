@@ -9,4 +9,5 @@
     <string name="delete_account">Eliminar</string>
     <string name="source_account">Origen</string>
     <string name="destination_account">Destino</string>
+    <string name="transaction_details_title">Detalles</string>
 </resources>

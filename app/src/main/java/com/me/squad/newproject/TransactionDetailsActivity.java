@@ -29,6 +29,10 @@ public class TransactionDetailsActivity extends AppCompatActivity {
         Intent i = getIntent();
         Transaction transaction = (Transaction) i.getSerializableExtra("currentTransaction");
 
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.transaction_details_title));  // provide compatibility to all the versions
+        }
+
         // TransactionType and destination account
         CircleImageView imageView = (CircleImageView) findViewById(R.id.transaction_type_image_details);
         Drawable color = null;

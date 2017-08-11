@@ -26,6 +26,10 @@ public class TransactionListActivity extends AppCompatActivity {
         Intent i = getIntent();
         Account account = (Account) i.getSerializableExtra("currentAccount");
 
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(account.getAccountName());  // provide compatibility to all the versions
+        }
+
         if(mockMode) {
             Transaction a = new Transaction();
             a.setTransactionAmount(2000);
