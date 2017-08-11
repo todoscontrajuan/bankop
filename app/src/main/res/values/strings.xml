@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Vigilante de gastos</string>
+    <string name="app_name">BanKop</string>
     <string name="menu_fab_label">¿Qué quieres agregar?</string>
     <string name="menu_fab_label_accounts">Cuenta</string>
     <string name="menu_fab_label_transactions">Transacción</string>

@@ -1,4 +1,4 @@
-package com.me.squad.newproject;
+package com.me.squad.bankop;
 
 import org.junit.Test;
 

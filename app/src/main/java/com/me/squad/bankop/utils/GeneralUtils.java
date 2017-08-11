@@ -1,4 +1,4 @@
-package com.me.squad.newproject.utils;
+package com.me.squad.bankop.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

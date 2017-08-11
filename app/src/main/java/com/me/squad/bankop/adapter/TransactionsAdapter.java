@@ -1,4 +1,4 @@
-package com.me.squad.newproject.adapter;
+package com.me.squad.bankop.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,12 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.me.squad.newproject.R;
-import com.me.squad.newproject.TransactionDetailsActivity;
-import com.me.squad.newproject.model.Transaction;
-import com.me.squad.newproject.utils.GeneralUtils;
+import com.me.squad.bankop.R;
+import com.me.squad.bankop.TransactionDetailsActivity;
+import com.me.squad.bankop.model.Transaction;
+import com.me.squad.bankop.utils.GeneralUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 

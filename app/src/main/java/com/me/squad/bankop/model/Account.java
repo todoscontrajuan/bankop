@@ -1,4 +1,4 @@
-package com.me.squad.newproject.model;
+package com.me.squad.bankop.model;
 
 import java.io.Serializable;
 

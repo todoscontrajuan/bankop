@@ -1,4 +1,4 @@
-package com.me.squad.newproject.adapter;
+package com.me.squad.bankop.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.me.squad.newproject.R;
-import com.me.squad.newproject.TransactionListActivity;
-import com.me.squad.newproject.model.Account;
+import com.me.squad.bankop.R;
+import com.me.squad.bankop.TransactionListActivity;
+import com.me.squad.bankop.model.Account;
 
 import java.util.List;
 

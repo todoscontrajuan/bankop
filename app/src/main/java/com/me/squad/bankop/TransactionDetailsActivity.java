@@ -1,4 +1,4 @@
-package com.me.squad.newproject;
+package com.me.squad.bankop;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -10,11 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.me.squad.newproject.model.Account;
-import com.me.squad.newproject.model.Transaction;
-import com.me.squad.newproject.utils.GeneralUtils;
+import com.me.squad.bankop.model.Transaction;
+import com.me.squad.bankop.utils.GeneralUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;

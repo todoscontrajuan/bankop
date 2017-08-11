@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.me.squad.newproject.TransactionDetailsActivity"
+    tools:context="com.me.squad.bankop.TransactionDetailsActivity"
     android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView

@@ -1,14 +1,14 @@
-package com.me.squad.newproject;
+package com.me.squad.bankop;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.me.squad.newproject.adapter.TransactionsAdapter;
-import com.me.squad.newproject.model.Account;
-import com.me.squad.newproject.model.Transaction;
-import com.me.squad.newproject.model.TransactionType;
+import com.me.squad.bankop.adapter.TransactionsAdapter;
+import com.me.squad.bankop.model.Account;
+import com.me.squad.bankop.model.Transaction;
+import com.me.squad.bankop.model.TransactionType;
 
 import java.util.ArrayList;
 import java.util.Date;

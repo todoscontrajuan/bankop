@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.me.squad.newproject">
+    package="com.me.squad.bankop">
 
     <application
         android:allowBackup="true"
@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.me.squad.bankop.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TransactionListActivity" />
-        <activity android:name=".TransactionDetailsActivity"></activity>
+        <activity android:name="com.me.squad.bankop.TransactionListActivity" />
+        <activity android:name="com.me.squad.bankop.TransactionDetailsActivity" />
     </application>
 
 </manifest>

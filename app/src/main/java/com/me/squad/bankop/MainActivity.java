@@ -1,12 +1,12 @@
-package com.me.squad.newproject;
+package com.me.squad.bankop;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.me.squad.newproject.adapter.AccountsAdapter;
-import com.me.squad.newproject.model.Account;
+import com.me.squad.bankop.adapter.AccountsAdapter;
+import com.me.squad.bankop.model.Account;
 
 import java.util.ArrayList;
 import java.util.List;
