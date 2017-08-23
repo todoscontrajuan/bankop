@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/transaction_elements_background_color">
+    android:background="@color/button_elements_background_color">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/transaction_type_image"

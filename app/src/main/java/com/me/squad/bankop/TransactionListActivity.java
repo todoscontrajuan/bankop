@@ -27,7 +27,7 @@ public class TransactionListActivity extends AppCompatActivity {
         Account account = (Account) i.getSerializableExtra("currentAccount");
 
         if(getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(account.getAccountName());  // provide compatibility to all the versions
+            getSupportActionBar().setTitle(account.getAccountName());
         }
 
         if(mockMode) {

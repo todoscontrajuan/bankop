@@ -1,10 +1,14 @@
 package com.me.squad.bankop;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.me.squad.bankop.adapter.AccountsAdapter;
 import com.me.squad.bankop.model.Account;
 
@@ -21,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.accounts_title));
+        }
+
+        final FloatingActionMenu fam = (FloatingActionMenu) findViewById(R.id.fam);
 
         accountsRecyclerView = (RecyclerView) findViewById(R.id.accounts_recycler_view);
         AccountsAdapter accountsAdapter = new AccountsAdapter(getApplicationContext(), accountsList);
@@ -47,5 +57,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         accountsAdapter.notifyDataSetChanged();
+
+        // Listener
+        FloatingActionButton accountsFab = (FloatingActionButton) findViewById(R.id.fab_accounts);
+        accountsFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fam.close(false);
+                Intent i = new Intent(getApplicationContext(), AddAccountActivity.class);
+                startActivity(i);
+            }
+        });
+
+        // Listener
+        FloatingActionButton transactionsFab = (FloatingActionButton) findViewById(R.id.fab_records);
+        transactionsFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fam.close(false);
+                Intent i = new Intent(getApplicationContext(), AddTransactionActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

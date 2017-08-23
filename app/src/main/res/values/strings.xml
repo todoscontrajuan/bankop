@@ -1,5 +1,7 @@
 <resources>
+    <!-- Main -->
     <string name="app_name">BanKop</string>
+    <string name="accounts_title">Mis cuentas</string>
     <string name="menu_fab_label">¿Qué quieres agregar?</string>
     <string name="menu_fab_label_accounts">Cuenta</string>
     <string name="menu_fab_label_transactions">Transacción</string>
@@ -7,7 +9,30 @@
     <string name="see_transactions">Ver transacciones</string>
     <string name="edit_account">Editar</string>
     <string name="delete_account">Eliminar</string>
+
+    <!-- Transaction details -->
+    <string name="transaction_details_title">Detalles</string>
     <string name="source_account">Origen</string>
     <string name="destination_account">Destino</string>
-    <string name="transaction_details_title">Detalles</string>
+    <string-array name="transaction_types_array">
+        <item>Gasto</item>
+        <item>Ingreso</item>
+    </string-array>
+
+    <!-- Add account -->
+    <string name="add_account_title">Agregar cuenta</string>
+    <string name="add_account_subtitle">Agregar cuenta</string>
+    <string name="account_name">Nombre cuenta</string>
+    <string name="initial_value">Monto inicial</string>
+    <string name="add_account">Agregar</string>
+    <string name="cancel">Cancelar</string>
+
+    <!-- Add transaction -->
+    <string name="add_transaction_title">Agregar una transacción</string>
+    <string name="add_transaction_subtitle">Agregar transacción</string>
+    <string name="amount">Importe</string>
+
+    <!-- Add transfer -->
+    <string name="add_transfer_title">Realizar transferencia</string>
+
 </resources>

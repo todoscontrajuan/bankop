@@ -93,7 +93,7 @@
             android:text="@string/edit_account"
             android:layout_marginEnd="@dimen/buttons_margin_transaction_details"
             android:background="@color/colorPrimary"
-            android:textColor="@color/transaction_elements_background_color"/>
+            android:textColor="@color/button_elements_background_color"/>
 
         <Button
             android:id="@+id/delete_transaction_button"
@@ -102,7 +102,7 @@
             android:text="@string/delete_account"
             android:layout_marginStart="@dimen/buttons_margin_transaction_details"
             android:background="@color/colorPrimary"
-            android:textColor="@color/transaction_elements_background_color"/>
+            android:textColor="@color/button_elements_background_color"/>
 
     </LinearLayout>
 

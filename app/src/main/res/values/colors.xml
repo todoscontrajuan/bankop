@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#009688</color>
-    <color name="colorPrimaryDark">#00796B</color>
-    <color name="colorAccent">#1de9b6</color>
+    <color name="colorPrimaryDark">#00796b</color>
+    <color name="colorAccent">#00bfa5</color>
     <color name="background_color">#eceff1</color>
     <color name="fab_accounts_color">#00acc1</color>
     <color name="fab_accounts_colorPressed">#00bcd4</color>
@@ -10,7 +10,9 @@
     <color name="fab_menu_color_text_labels">#ffffff</color>
     <color name="amount_card_text_color">#000000</color>
     <color name="expense_color">#e53935</color>
+    <color name="expense_color_darker">#d32f2f</color>
     <color name="income_color">#43a047</color>
+    <color name="income_color_darker">#388e3c</color>
     <color name="transactions_list_text_color">#455a64</color>
-    <color name="transaction_elements_background_color">#ffffff</color>
+    <color name="button_elements_background_color">#ffffff</color>
 </resources>

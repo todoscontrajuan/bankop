@@ -28,7 +28,7 @@ public class TransactionDetailsActivity extends AppCompatActivity {
         Transaction transaction = (Transaction) i.getSerializableExtra("currentTransaction");
 
         if(getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(getString(R.string.transaction_details_title));  // provide compatibility to all the versions
+            getSupportActionBar().setTitle(getString(R.string.transaction_details_title));
         }
 
         // TransactionType and destination account

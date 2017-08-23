@@ -1,2 +1,2 @@
-# Vigilante de gastos (Nombre provisional)
-Android app en progreso para control de gastos personales.
+# Bankop
+Android app en progreso para control de gastos e ingresos
