@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         final FloatingActionMenu fam = (FloatingActionMenu) findViewById(R.id.fam);
 
         accountsRecyclerView = (RecyclerView) findViewById(R.id.accounts_recycler_view);
-        AccountsAdapter accountsAdapter = new AccountsAdapter(getApplicationContext(), accountsList);
+        AccountsAdapter accountsAdapter = new AccountsAdapter(getApplicationContext(), accountsList, fam);
         accountsRecyclerView.setAdapter(accountsAdapter);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         accountsRecyclerView.setLayoutManager(mLayoutManager);
@@ -58,23 +59,32 @@ public class MainActivity extends AppCompatActivity {
 
         accountsAdapter.notifyDataSetChanged();
 
-        // Listener
+        // Listeners
+        RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.main_layout);
+        mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(fam.isOpened()) {
+                    fam.close(true);
+                }
+            }
+        });
+
         FloatingActionButton accountsFab = (FloatingActionButton) findViewById(R.id.fab_accounts);
         accountsFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fam.close(false);
+                fam.close(true);
                 Intent i = new Intent(getApplicationContext(), AddAccountActivity.class);
                 startActivity(i);
             }
         });
 
-        // Listener
         FloatingActionButton transactionsFab = (FloatingActionButton) findViewById(R.id.fab_records);
         transactionsFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fam.close(false);
+                fam.close(true);
                 Intent i = new Intent(getApplicationContext(), AddTransactionActivity.class);
                 startActivity(i);
             }

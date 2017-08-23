@@ -2,6 +2,7 @@ package com.me.squad.bankop.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionMenu;
 import com.me.squad.bankop.R;
 import com.me.squad.bankop.TransactionListActivity;
 import com.me.squad.bankop.model.Account;
@@ -27,24 +29,28 @@ import java.util.List;
 public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyViewHolder>{
     private Context mContext;
     private List<Account> accountsList;
+    private FloatingActionMenu fam;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView accountName, accountBalance;
-        public ImageView overflow;
-        public Button seeTransactions;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView accountName, accountBalance;
+        ImageView overflow;
+        Button seeTransactions;
+        CardView accountCard;
 
-        public MyViewHolder(View view) {
+        MyViewHolder(View view) {
             super(view);
             accountName = (TextView) view.findViewById(R.id.account_name);
             accountBalance = (TextView) view.findViewById(R.id.account_balance);
             overflow = (ImageView) view.findViewById(R.id.overflow);
             seeTransactions = (Button) itemView.findViewById(R.id.see_transactions);
+            accountCard = (CardView) itemView.findViewById(R.id.account_card_view);
         }
     }
 
-    public AccountsAdapter(Context mContext, List<Account> accountsList) {
+    public AccountsAdapter(Context mContext, List<Account> accountsList, FloatingActionMenu fam) {
         this.mContext = mContext;
         this.accountsList = accountsList;
+        this.fam = fam;
     }
 
     @Override
@@ -64,6 +70,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
         holder.seeTransactions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fam.close(true);
                 Intent i = new Intent(mContext, TransactionListActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.putExtra("currentAccount", account);
@@ -74,7 +81,15 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fam.close(true);
                 showPopupMenu(holder.overflow);
+            }
+        });
+
+        holder.accountCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fam.close(true);
             }
         });
     }
@@ -94,9 +109,9 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
     /**
      * Click listener for popup menu items
      */
-    class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
+    private class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
 
-        public MyMenuItemClickListener() {
+        MyMenuItemClickListener() {
         }
 
         @Override
