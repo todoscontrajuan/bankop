@@ -21,16 +21,21 @@
 
     <!-- Add account -->
     <string name="add_account_title">Agregar cuenta</string>
-    <string name="add_account_subtitle">Agregar cuenta</string>
     <string name="account_name">Nombre cuenta</string>
     <string name="initial_value">Monto inicial</string>
-    <string name="add_account">Agregar</string>
+    <string name="add">Agregar</string>
     <string name="cancel">Cancelar</string>
 
     <!-- Add transaction -->
-    <string name="add_transaction_title">Agregar una transacción</string>
-    <string name="add_transaction_subtitle">Agregar transacción</string>
+    <string name="add_transaction_title">Agregar transacción</string>
     <string name="amount">Importe</string>
+    <string name="date">Fecha</string>
+    <string-array name="test_accounts">
+        <item>Efectivo</item>
+        <item>Debito</item>
+        <item>Plazo Fijo</item>
+    </string-array>
+    <string name="note">Nota...</string>
 
     <!-- Add transfer -->
     <string name="add_transfer_title">Realizar transferencia</string>

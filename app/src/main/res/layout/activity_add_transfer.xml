@@ -3,31 +3,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.me.squad.bankop.AddAccountActivity"
+    tools:context="com.me.squad.bankop.AddTransferActivity"
     android:padding="16dp"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_account_title"
+        android:text="@string/add_transfer_title"
         android:textStyle="bold"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/account_name"
-        android:layout_marginTop="16dp"
-        android:hint="@string/account_name"/>
+        android:id="@+id/transfer_amount"
+        android:layout_marginTop="@dimen/margin_big_texts"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:hint="@string/amount"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/account_from_spinner"
+            android:layout_marginTop="@dimen/margin_big_texts"
+            android:layout_weight="1">
+        </Spinner>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/account_to_spinner"
+            android:layout_marginTop="@dimen/margin_big_texts"
+            android:layout_weight="1">
+        </Spinner>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/transfer_date"
+        android:hint="@string/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:focusable="false"
+        android:clickable="true"
+        android:maxLines="1"
+        android:layout_marginTop="@dimen/margin_big_texts"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/initial_value_account"
-        android:layout_marginTop="16dp"
+        android:id="@+id/transfer_note"
+        android:layout_marginTop="@dimen/margin_big_texts"
         android:ems="10"
-        android:inputType="numberDecimal"
-        android:hint="@string/initial_value"/>
+        android:hint="@string/note"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +74,7 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/add_account_button"
+            android:id="@+id/add_transfer_button"
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
             android:text="@string/add"

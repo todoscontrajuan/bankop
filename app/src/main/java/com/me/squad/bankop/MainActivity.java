@@ -89,5 +89,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        FloatingActionButton transfersFab = (FloatingActionButton) findViewById(R.id.fab_transfers);
+        transfersFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fam.close(true);
+                Intent i = new Intent(getApplicationContext(), AddTransferActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

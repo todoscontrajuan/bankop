@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_transaction_subtitle"
+        android:text="@string/add_transaction_title"
         android:textStyle="bold"/>
 
     <Spinner
@@ -28,5 +28,60 @@
         android:ems="10"
         android:inputType="numberDecimal"
         android:hint="@string/amount"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/account_spinner"
+        android:layout_marginTop="@dimen/margin_big_texts">
+    </Spinner>
+
+    <EditText
+        android:id="@+id/transaction_date"
+        android:hint="@string/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:focusable="false"
+        android:clickable="true"
+        android:maxLines="1"
+        android:layout_marginTop="@dimen/margin_big_texts"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/transaction_note"
+        android:layout_marginTop="@dimen/margin_big_texts"
+        android:ems="10"
+        android:hint="@string/note"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/margin_big_big_texts"
+        android:paddingStart="@dimen/margin_normal_texts"
+        android:paddingEnd="@dimen/margin_normal_texts"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/add_transaction_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/add"
+            android:layout_marginEnd="@dimen/buttons_margin_transaction_details"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/button_elements_background_color"/>
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/cancel"
+            android:layout_marginStart="@dimen/buttons_margin_transaction_details"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/button_elements_background_color"/>
+
+    </LinearLayout>
 
 </LinearLayout>

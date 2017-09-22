@@ -19,7 +19,8 @@
         <activity android:name=".TransactionListActivity" />
         <activity android:name=".TransactionDetailsActivity" />
         <activity android:name=".AddAccountActivity" />
-        <activity android:name=".AddTransactionActivity"></activity>
+        <activity android:name=".AddTransactionActivity" />
+        <activity android:name=".AddTransferActivity"></activity>
     </application>
 
 </manifest>
