@@ -11,9 +11,13 @@ import android.widget.RelativeLayout;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
 import com.me.squad.bankop.adapter.AccountsAdapter;
 import com.me.squad.bankop.model.Account;
+import com.me.squad.bankop.utils.DatabaseHelper;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView accountsRecyclerView;
     private List<Account> accountsList = new ArrayList<>();
-    private boolean mockDate = false;
+    private boolean mockData = false;
+    private DatabaseHelper databaseHelper = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +37,8 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(getString(R.string.accounts_title));
         }
 
-        final FloatingActionMenu fam = (FloatingActionMenu) findViewById(R.id.fam);
-
-        accountsRecyclerView = (RecyclerView) findViewById(R.id.accounts_recycler_view);
-        AccountsAdapter accountsAdapter = new AccountsAdapter(getApplicationContext(), accountsList, fam);
-        accountsRecyclerView.setAdapter(accountsAdapter);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
-        accountsRecyclerView.setLayoutManager(mLayoutManager);
-
-        if(mockDate) {
+        if(mockData) {
+            // TODO Delete this mock data
             Account a, b, c;
             a = new Account();
             b = new Account();
@@ -55,15 +53,24 @@ public class MainActivity extends AppCompatActivity {
             c.setAccountBalance(5000);
             accountsList.add(c);
         } else {
+            try {
+                Dao<Account, Integer> accountDao = getHelper().getAccountDao();
+                accountsList = accountDao.queryForAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             if(accountsList.size() == 0) {
                 LinearLayout noAccountsLayout = (LinearLayout) findViewById(R.id.no_accounts_layout);
                 noAccountsLayout.setVisibility(View.VISIBLE);
-            } else {
-
             }
         }
 
-        accountsAdapter.notifyDataSetChanged();
+        final FloatingActionMenu fam = (FloatingActionMenu) findViewById(R.id.fam);
+        accountsRecyclerView = (RecyclerView) findViewById(R.id.accounts_recycler_view);
+        AccountsAdapter accountsAdapter = new AccountsAdapter(getApplicationContext(), accountsList, fam);
+        accountsRecyclerView.setAdapter(accountsAdapter);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
+        accountsRecyclerView.setLayoutManager(mLayoutManager);
 
         // Listeners
         RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.main_layout);
@@ -105,5 +112,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private DatabaseHelper getHelper() {
+        if (databaseHelper == null) {
+            databaseHelper = OpenHelperManager.getHelper(this,DatabaseHelper.class);
+        }
+        return databaseHelper;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (databaseHelper != null) {
+            OpenHelperManager.releaseHelper();
+            databaseHelper = null;
+        }
     }
 }

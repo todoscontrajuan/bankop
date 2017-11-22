@@ -84,4 +84,13 @@ public class AddAccountActivity extends AppCompatActivity {
         }
         return databaseHelper;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (databaseHelper != null) {
+            OpenHelperManager.releaseHelper();
+            databaseHelper = null;
+        }
+    }
 }
