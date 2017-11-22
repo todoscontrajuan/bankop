@@ -9,6 +9,8 @@
     <string name="see_transactions">Ver transacciones</string>
     <string name="edit_account">Editar</string>
     <string name="delete_account">Eliminar</string>
+    <string name="image_description">Imagen</string>
+    <string name="no_accounts_message">No tienes ninguna cuenta para operar, agrega una desde el lindo menú flotante para empezar!</string>
 
     <!-- Transaction details -->
     <string name="transaction_details_title">Detalles</string>
@@ -25,8 +27,8 @@
     <string name="initial_value">Monto inicial</string>
     <string name="add">Agregar</string>
     <string name="cancel">Cancelar</string>
-    <string name="fields_error_message">Todos los campos son necesarios!</string>
-    <string name="accounts_success_message">Cuenta agregada!</string>
+    <string name="fields_error_message">¡Todos los campos son necesarios!</string>
+    <string name="accounts_success_message">¡Cuenta agregada!</string>
 
     <!-- Add transaction -->
     <string name="add_transaction_title">Agregar transacción</string>
@@ -37,7 +39,7 @@
         <item>Debito</item>
         <item>Plazo Fijo</item>
     </string-array>
-    <string name="note">Nota...</string>
+    <string name="note">Nota…</string>
 
     <!-- Add transfer -->
     <string name="add_transfer_title">Realizar transferencia</string>

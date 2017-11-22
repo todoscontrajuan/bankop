@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.github.clans.fab.FloatingActionButton;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView accountsRecyclerView;
     private List<Account> accountsList = new ArrayList<>();
-    private boolean mockDate = true;
+    private boolean mockDate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,12 @@ public class MainActivity extends AppCompatActivity {
             c.setAccountBalance(5000);
             accountsList.add(c);
         } else {
-            // TODO Real data!!!
+            if(accountsList.size() == 0) {
+                LinearLayout noAccountsLayout = (LinearLayout) findViewById(R.id.no_accounts_layout);
+                noAccountsLayout.setVisibility(View.VISIBLE);
+            } else {
+
+            }
         }
 
         accountsAdapter.notifyDataSetChanged();
