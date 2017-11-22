@@ -25,6 +25,8 @@
     <string name="initial_value">Monto inicial</string>
     <string name="add">Agregar</string>
     <string name="cancel">Cancelar</string>
+    <string name="fields_error_message">Todos los campos son necesarios!</string>
+    <string name="accounts_success_message">Cuenta agregada!</string>
 
     <!-- Add transaction -->
     <string name="add_transaction_title">Agregar transacción</string>

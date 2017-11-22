@@ -1,0 +1,61 @@
+# --table-start--
+dataClass=com.me.squad.bankop.model.Account
+tableName=accounts
+# --table-fields-start--
+# --field-start--
+fieldName=accountId
+columnName=account_id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=accountName
+columnName=account_name
+# --field-end--
+# --field-start--
+fieldName=accountBalance
+columnName=account_balance
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+
+#################################
+# --table-start--
+dataClass=com.me.squad.bankop.model.Transaction
+tableName=transactions
+# --table-fields-start--
+# --field-start--
+fieldName=transactionId
+columnName=transaction_id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=transactionAmount
+columnName=transaction_amount
+# --field-end--
+# --field-start--
+fieldName=transactionDateInMilliseconds
+columnName=transaction_date
+# --field-end--
+# --field-start--
+fieldName=transactionNote
+columnName=transaction_note
+# --field-end--
+# --field-start--
+fieldName=transactionType
+columnName=transaction_type
+dataType=DataType.ENUM_INTEGER
+# --field-end--
+# --field-start--
+fieldName=transactionSourceAccount
+columnName=transaction_source
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=transactionDestinationAccount
+columnName=transaction_destination
+foreign=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

@@ -1,5 +1,8 @@
 package com.me.squad.bankop.model;
 
+import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.DatabaseField;
+
 import java.io.Serializable;
 
 /**
@@ -8,11 +11,25 @@ import java.io.Serializable;
 
 public class Transaction implements Serializable {
 
+    @DatabaseField(generatedId = true, columnName = "transaction_id")
+    private int transactionId;
+
+    @DatabaseField(columnName = "transaction_amount")
     private double transactionAmount;
+
+    @DatabaseField(columnName = "transaction_date")
     private long transactionDateInMilliseconds;
+
+    @DatabaseField(columnName = "transaction_note")
     private String transactionNote;
+
+    @DatabaseField(dataType = DataType.ENUM_INTEGER, columnName = "transaction_type")
     private TransactionType transactionType;
+
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true, columnName = "transaction_source")
     private Account transactionSourceAccount;
+
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "transaction_destination")
     private Account transactionDestinationAccount;
 
     public double getTransactionAmount() {
@@ -61,5 +78,13 @@ public class Transaction implements Serializable {
 
     public void setTransactionDestinationAccount(Account transactionDestinationAccount) {
         this.transactionDestinationAccount = transactionDestinationAccount;
+    }
+
+    public int getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(int transactionId) {
+        this.transactionId = transactionId;
     }
 }

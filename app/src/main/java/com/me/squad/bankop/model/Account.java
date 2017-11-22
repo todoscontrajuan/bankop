@@ -1,5 +1,7 @@
 package com.me.squad.bankop.model;
 
+import com.j256.ormlite.field.DatabaseField;
+
 import java.io.Serializable;
 
 /**
@@ -7,7 +9,14 @@ import java.io.Serializable;
  */
 
 public class Account implements Serializable {
+
+    @DatabaseField(generatedId = true, columnName = "account_id")
+    private int accountId;
+
+    @DatabaseField(columnName = "account_name")
     private String accountName;
+
+    @DatabaseField(columnName = "account_balance")
     private double accountBalance;
 
     public String getAccountName() {
@@ -24,5 +33,13 @@ public class Account implements Serializable {
 
     public void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 }
