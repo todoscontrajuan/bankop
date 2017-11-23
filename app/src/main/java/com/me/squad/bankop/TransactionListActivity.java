@@ -34,8 +34,7 @@ public class TransactionListActivity extends AppCompatActivity {
             Transaction a = new Transaction();
             a.setTransactionAmount(2000);
             a.setTransactionNote("Hola");
-            Date date = new Date();
-            a.setTransactionDateInMilliseconds(date.getTime());
+            a.setTransactionDate(new Date());
             a.setTransactionType(TransactionType.EXPENSE);
             a.setTransactionSourceAccount(account);
             transactionsList.add(a);
@@ -43,7 +42,7 @@ public class TransactionListActivity extends AppCompatActivity {
             Transaction b = new Transaction();
             b.setTransactionAmount(300);
             b.setTransactionNote("Hola this is a long thing to see how the note is behaving with a long text");
-            b.setTransactionDateInMilliseconds(date.getTime());
+            b.setTransactionDate(new Date());
             b.setTransactionType(TransactionType.INCOME);
             b.setTransactionSourceAccount(account);
             transactionsList.add(b);
@@ -51,7 +50,7 @@ public class TransactionListActivity extends AppCompatActivity {
             Transaction c = new Transaction();
             c.setTransactionAmount(500);
             c.setTransactionNote("Transfer test");
-            c.setTransactionDateInMilliseconds(date.getTime());
+            c.setTransactionDate(new Date());
             c.setTransactionType(TransactionType.TRANSFER);
             c.setTransactionSourceAccount(account);
             Account d = new Account();

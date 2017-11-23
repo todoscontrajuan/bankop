@@ -15,7 +15,7 @@ public class GeneralUtils {
 
     // Date format
     public static String formatTime(Date dateObject) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("dd/MM/yyyy");
         return timeFormat.format(dateObject);
     }
 

@@ -5,5 +5,5 @@ package com.me.squad.bankop.model;
  */
 
 public enum TransactionType {
-    INCOME, EXPENSE, TRANSFER
+    EXPENSE, INCOME, TRANSFER
 }

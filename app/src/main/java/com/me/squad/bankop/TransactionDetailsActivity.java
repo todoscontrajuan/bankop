@@ -66,7 +66,7 @@ public class TransactionDetailsActivity extends AppCompatActivity {
         transactionNote.setText(transaction.getTransactionNote());
 
         // Transaction date
-        Date dateObject = new Date(transaction.getTransactionDateInMilliseconds());
+        Date dateObject = transaction.getTransactionDate();
         TextView transactionDate = (TextView) findViewById(R.id.transaction_date_details);
         String formattedTime = GeneralUtils.formatTime(dateObject);
         transactionDate.setText(formattedTime);

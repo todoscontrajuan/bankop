@@ -4,6 +4,7 @@ import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by juan_ on 06/07/2017.
@@ -18,7 +19,7 @@ public class Transaction implements Serializable {
     private double transactionAmount;
 
     @DatabaseField(columnName = "transaction_date")
-    private long transactionDateInMilliseconds;
+    private Date transactionDate;
 
     @DatabaseField(columnName = "transaction_note")
     private String transactionNote;
@@ -26,7 +27,7 @@ public class Transaction implements Serializable {
     @DatabaseField(dataType = DataType.ENUM_INTEGER, columnName = "transaction_type")
     private TransactionType transactionType;
 
-    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true, columnName = "transaction_source")
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "transaction_source")
     private Account transactionSourceAccount;
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "transaction_destination")
@@ -38,14 +39,6 @@ public class Transaction implements Serializable {
 
     public void setTransactionAmount(double transactionAmount) {
         this.transactionAmount = transactionAmount;
-    }
-
-    public long getTransactionDateInMilliseconds() {
-        return transactionDateInMilliseconds;
-    }
-
-    public void setTransactionDateInMilliseconds(long transactionDateInMilliseconds) {
-        this.transactionDateInMilliseconds = transactionDateInMilliseconds;
     }
 
     public String getTransactionNote() {
@@ -86,5 +79,13 @@ public class Transaction implements Serializable {
 
     public void setTransactionId(int transactionId) {
         this.transactionId = transactionId;
+    }
+
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
     }
 }

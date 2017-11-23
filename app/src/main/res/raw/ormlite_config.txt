@@ -34,7 +34,7 @@ fieldName=transactionAmount
 columnName=transaction_amount
 # --field-end--
 # --field-start--
-fieldName=transactionDateInMilliseconds
+fieldName=transactionDate
 columnName=transaction_date
 # --field-end--
 # --field-start--

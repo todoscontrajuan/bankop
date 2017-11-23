@@ -59,7 +59,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
         transactionNote.setText(currentTransaction.getTransactionNote());
 
         // Date
-        Date dateObject = new Date(currentTransaction.getTransactionDateInMilliseconds());
+        Date dateObject = currentTransaction.getTransactionDate();
         TextView transactionDate = (TextView) listItemView.findViewById(R.id.transaction_date);
         String formattedTime = GeneralUtils.formatTime(dateObject);
         transactionDate.setText(formattedTime);
