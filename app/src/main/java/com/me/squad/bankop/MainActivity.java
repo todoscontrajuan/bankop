@@ -1,5 +1,7 @@
 package com.me.squad.bankop;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -66,8 +68,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 fam.close(true);
-                Intent i = new Intent(getApplicationContext(), AddTransactionActivity.class);
-                startActivity(i);
+                if(accountsList.size() == 0) {
+                    showNoAccountsErrorMessage();
+                } else {
+                    Intent i = new Intent(getApplicationContext(), AddTransactionActivity.class);
+                    startActivity(i);
+                }
             }
         });
 
@@ -76,8 +82,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 fam.close(true);
-                Intent i = new Intent(getApplicationContext(), AddTransferActivity.class);
-                startActivity(i);
+                if(accountsList.size() == 0) {
+                    showNoAccountsErrorMessage();
+                } else {
+                    Intent i = new Intent(getApplicationContext(), AddTransferActivity.class);
+                    startActivity(i);
+                }
             }
         });
     }
@@ -120,5 +130,18 @@ public class MainActivity extends AppCompatActivity {
         accountsRecyclerView.setAdapter(accountsAdapter);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         accountsRecyclerView.setLayoutManager(mLayoutManager);
+    }
+
+    private void showNoAccountsErrorMessage() {
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        alertDialogBuilder.setMessage(getString(R.string.no_accounts_error_message));
+        alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

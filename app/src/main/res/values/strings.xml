@@ -11,6 +11,7 @@
     <string name="delete_account">Eliminar</string>
     <string name="image_description">Imagen</string>
     <string name="no_accounts_message">No tienes ninguna cuenta para operar, agrega una desde el lindo menú flotante para empezar!</string>
+    <string name="no_accounts_error_message">Necesitas unas cuenta para usar esta opción.</string>
 
     <!-- Transaction details -->
     <string name="transaction_details_title">Detalles</string>
