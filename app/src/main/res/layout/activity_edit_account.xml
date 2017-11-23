@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.me.squad.bankop.EditAccountActivity"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_account_tittle"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/account_name"
+        android:layout_marginTop="16dp"
+        android:hint="@string/account_name"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_value_account"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:hint="@string/new_value"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/margin_big_big_texts"
+        android:paddingStart="@dimen/margin_normal_texts"
+        android:paddingEnd="@dimen/margin_normal_texts"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/edit_account_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/edit_account"
+            android:layout_marginEnd="@dimen/buttons_margin_transaction_details"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/button_elements_background_color"/>
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/cancel"
+            android:layout_marginStart="@dimen/buttons_margin_transaction_details"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/button_elements_background_color"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+

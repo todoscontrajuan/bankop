@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.me.squad.bankop.model.Account;
 import com.me.squad.bankop.utils.DecimalDigitsInputFilter;
@@ -18,20 +17,25 @@ import com.me.squad.bankop.utils.GeneralUtils;
 
 import java.sql.SQLException;
 
-public class AddAccountActivity extends AppCompatActivity {
+public class EditAccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_account);
+        setContentView(R.layout.activity_edit_account);
 
         if(getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(getString(R.string.add_account_title));
+            getSupportActionBar().setTitle(getString(R.string.edit_account_tittle));
         }
 
+        final Account account = (Account) getIntent().getSerializableExtra("currentAccount");
+
         final EditText accountName = (EditText) findViewById(R.id.account_name);
-        final EditText initialValue = (EditText) findViewById(R.id.initial_value_account);
-        initialValue.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(8,2)});
+        final EditText newValue = (EditText) findViewById(R.id.new_value_account);
+        newValue.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(8,2)});
+
+        accountName.setText(account.getAccountName());
+        newValue.setText(String.valueOf(account.getAccountBalance()));
 
         Button cancelButton = (Button) findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -41,13 +45,12 @@ public class AddAccountActivity extends AppCompatActivity {
             }
         });
 
-        Button addAccountButton = (Button) findViewById(R.id.add_account_button);
-        addAccountButton.setOnClickListener(new View.OnClickListener() {
+        Button editAccountButton = (Button) findViewById(R.id.edit_account_button);
+        editAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Account account = new Account();
-                if(accountName.getText().toString().matches("") || initialValue.getText().toString().matches("")) {
-                    final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(AddAccountActivity.this);
+                if(accountName.getText().toString().matches("") || newValue.getText().toString().matches("")) {
+                    final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(EditAccountActivity.this);
                     alertDialogBuilder.setMessage(getString(R.string.fields_error_message));
                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
@@ -59,11 +62,11 @@ public class AddAccountActivity extends AppCompatActivity {
                     alertDialog.show();
                 } else {
                     account.setAccountName(accountName.getText().toString());
-                    account.setAccountBalance(Double.parseDouble(initialValue.getText().toString()));
+                    account.setAccountBalance(Double.parseDouble(newValue.getText().toString()));
                     try {
                         final Dao<Account, Integer> accountDao = GeneralUtils.getHelper(getApplicationContext()).getAccountDao();
-                        accountDao.create(account);
-                        Toast.makeText(AddAccountActivity.this, getString(R.string.accounts_success_message), Toast.LENGTH_SHORT).show();
+                        accountDao.update(account);
+                        Toast.makeText(EditAccountActivity.this, getString(R.string.delete_account_success_message), Toast.LENGTH_SHORT).show();
                         finish();
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -71,15 +74,5 @@ public class AddAccountActivity extends AppCompatActivity {
                 }
             }
         });
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (GeneralUtils.databaseHelper != null) {
-            OpenHelperManager.releaseHelper();
-            GeneralUtils.databaseHelper = null;
-        }
     }
 }

@@ -1,6 +1,8 @@
 package com.me.squad.bankop.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.widget.Button;
@@ -16,10 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionMenu;
+import com.j256.ormlite.dao.Dao;
+import com.me.squad.bankop.AddAccountActivity;
+import com.me.squad.bankop.EditAccountActivity;
+import com.me.squad.bankop.MainActivity;
 import com.me.squad.bankop.R;
 import com.me.squad.bankop.TransactionListActivity;
 import com.me.squad.bankop.model.Account;
+import com.me.squad.bankop.utils.GeneralUtils;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -30,6 +38,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
     private Context mContext;
     private List<Account> accountsList;
     private FloatingActionMenu fam;
+    private Account account = null;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView accountName, accountBalance;
@@ -63,7 +72,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final Account account = accountsList.get(position);
+        account = accountsList.get(position);
         holder.accountName.setText(account.getAccountName());
         holder.accountBalance.setText("$" + String.format("%.2f", account.getAccountBalance()));
 
@@ -118,10 +127,40 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_edit_account:
-                    Toast.makeText(mContext, "Cuenta editada", Toast.LENGTH_SHORT).show();
+                    fam.close(true);
+                    Intent i = new Intent(mContext, EditAccountActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.putExtra("currentAccount", account);
+                    mContext.startActivity(i);
                     return true;
                 case R.id.action_delete_account:
-                    Toast.makeText(mContext, "Cuenta eliminada", Toast.LENGTH_SHORT).show();
+                    fam.close(true);
+                    final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+                    alertDialogBuilder.setMessage(mContext.getString(R.string.delete_account_warning));
+                    alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            try {
+                                final Dao<Account, Integer> accountDao = GeneralUtils.getHelper(mContext).getAccountDao();
+                                accountDao.delete(account);
+                                Toast.makeText(mContext, mContext.getString(R.string.delete_account_success_message), Toast.LENGTH_SHORT).show();
+                                dialogInterface.dismiss();
+                                if(mContext instanceof MainActivity){
+                                    ((MainActivity)mContext).loadAccountsInformation();
+                                }
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    alertDialogBuilder.setNegativeButton(mContext.getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
                     return true;
                 default:
             }
