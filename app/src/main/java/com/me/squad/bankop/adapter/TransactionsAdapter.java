@@ -56,7 +56,11 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
 
         // Note
         TextView transactionNote = (TextView) listItemView.findViewById(R.id.transaction_note);
-        transactionNote.setText(currentTransaction.getTransactionNote());
+        if(currentTransaction.getTransactionNote().matches("")) {
+            transactionNote.setText("-");
+        } else {
+            transactionNote.setText(currentTransaction.getTransactionNote());
+        }
 
         // Date
         Date dateObject = currentTransaction.getTransactionDate();

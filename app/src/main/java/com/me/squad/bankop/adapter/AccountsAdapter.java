@@ -78,6 +78,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
         holder.seeTransactions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                account = accountsList.get(position);
                 fam.close(true);
                 Intent i = new Intent(mContext, TransactionListActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
