@@ -23,7 +23,6 @@ import java.util.Date;
 public class TransactionListActivity extends AppCompatActivity {
 
     private ArrayList<Transaction> transactionsList = new ArrayList<>();
-    private Dao<Transaction, Integer> transactionDao;
     private Account account;
 
     @Override
