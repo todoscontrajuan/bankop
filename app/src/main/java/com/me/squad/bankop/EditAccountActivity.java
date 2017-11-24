@@ -66,7 +66,7 @@ public class EditAccountActivity extends AppCompatActivity {
                     try {
                         final Dao<Account, Integer> accountDao = GeneralUtils.getHelper(getApplicationContext()).getAccountDao();
                         accountDao.update(account);
-                        Toast.makeText(EditAccountActivity.this, getString(R.string.delete_account_success_message), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditAccountActivity.this, getString(R.string.edit_account_success_message), Toast.LENGTH_SHORT).show();
                         finish();
                     } catch (SQLException e) {
                         e.printStackTrace();
