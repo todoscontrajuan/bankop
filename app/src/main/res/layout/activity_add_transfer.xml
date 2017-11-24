@@ -25,22 +25,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/account_from_spinner"
-            android:layout_marginTop="@dimen/margin_big_texts"
-            android:layout_weight="1">
+            android:layout_margin="@dimen/margin_big_texts">
         </Spinner>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/transfer_arrow"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_big_texts"
+            android:src="@drawable/ic_arrow_forward_black_24dp" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/account_to_spinner"
-            android:layout_marginTop="@dimen/margin_big_texts"
-            android:layout_weight="1">
+            android:layout_margin="@dimen/margin_big_texts">
         </Spinner>
 
     </LinearLayout>
@@ -52,8 +58,7 @@
         android:inputType="date"
         android:focusable="false"
         android:clickable="true"
-        android:maxLines="1"
-        android:layout_marginTop="@dimen/margin_big_texts"/>
+        android:maxLines="1"/>
 
     <EditText
         android:layout_width="match_parent"

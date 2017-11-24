@@ -11,7 +11,8 @@
     <string name="delete_account">Eliminar</string>
     <string name="image_description">Imagen</string>
     <string name="no_accounts_message">No tienes ninguna cuenta para operar, agrega una desde el lindo menú flotante para empezar!</string>
-    <string name="no_accounts_error_message">Necesitas unas cuenta para usar esta opción.</string>
+    <string name="no_accounts_error_message">Necesitas una cuenta para usar esta opción.</string>
+    <string name="no_enough_accounts_error_message">Necesitas al menos 2 cuentas para usar esta opción.</string>
 
     <!-- Transaction details -->
     <string name="transaction_details_title">Detalles</string>
@@ -44,6 +45,8 @@
 
     <!-- Add transfer -->
     <string name="add_transfer_title">Realizar transferencia</string>
+    <string name="same_account_error">Las cuentas deben ser diferentes para realizar la transferencia.</string>
+    <string name="transfers_success_message">¡Transferencia realizada!</string>
 
     <!-- Edit account -->
     <string name="edit_account_tittle">Editar cuenta</string>

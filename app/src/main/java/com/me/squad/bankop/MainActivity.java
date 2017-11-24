@@ -82,8 +82,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 fam.close(true);
-                if(accountsList.size() == 0) {
-                    showNoAccountsErrorMessage();
+                if(accountsList.size() < 2) {
+                    final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                    alertDialogBuilder.setMessage(getString(R.string.no_enough_accounts_error_message));
+                    alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
                 } else {
                     Intent i = new Intent(getApplicationContext(), AddTransferActivity.class);
                     startActivity(i);
