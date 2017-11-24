@@ -41,8 +41,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
     private Account account = null;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView accountName, accountBalance;
-        ImageView overflow;
+        TextView accountName, accountBalance, overflow;
         Button seeTransactions;
         CardView accountCard;
 
@@ -50,7 +49,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
             super(view);
             accountName = (TextView) view.findViewById(R.id.account_name);
             accountBalance = (TextView) view.findViewById(R.id.account_balance);
-            overflow = (ImageView) view.findViewById(R.id.overflow);
+            overflow = (TextView) view.findViewById(R.id.overflow);
             seeTransactions = (Button) itemView.findViewById(R.id.see_transactions);
             accountCard = (CardView) itemView.findViewById(R.id.account_card_view);
         }
@@ -71,7 +70,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         account = accountsList.get(position);
         holder.accountName.setText(account.getAccountName());
         holder.accountBalance.setText("$" + String.format("%.2f", account.getAccountBalance()));
@@ -87,85 +86,66 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.MyView
             }
         });
 
-        holder.overflow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fam.close(true);
-                showPopupMenu(holder.overflow);
-            }
-        });
-
         holder.accountCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fam.close(true);
             }
         });
-    }
 
-    /**
-     * Showing popup menu when tapping on 3 dots
-     */
-    private void showPopupMenu(View view) {
-        // inflate menu
-        PopupMenu popup = new PopupMenu(mContext, view);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_account, popup.getMenu());
-        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
-        popup.show();
-    }
-
-    /**
-     * Click listener for popup menu items
-     */
-    private class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
-
-        MyMenuItemClickListener() {
-        }
-
-        @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.action_edit_account:
-                    fam.close(true);
-                    Intent i = new Intent(mContext, EditAccountActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    i.putExtra("currentAccount", account);
-                    mContext.startActivity(i);
-                    return true;
-                case R.id.action_delete_account:
-                    fam.close(true);
-                    final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
-                    alertDialogBuilder.setMessage(mContext.getString(R.string.delete_account_warning));
-                    alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            try {
-                                final Dao<Account, Integer> accountDao = GeneralUtils.getHelper(mContext).getAccountDao();
-                                accountDao.delete(account);
-                                Toast.makeText(mContext, mContext.getString(R.string.delete_account_success_message), Toast.LENGTH_SHORT).show();
-                                dialogInterface.dismiss();
-                                if(mContext instanceof MainActivity){
-                                    ((MainActivity)mContext).loadAccountsInformation();
-                                }
-                            } catch (SQLException e) {
-                                e.printStackTrace();
-                            }
+        holder.overflow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                account = accountsList.get(position);
+                PopupMenu popup = new PopupMenu(mContext, holder.overflow);
+                popup.inflate(R.menu.menu_account);
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_edit_account:
+                                fam.close(true);
+                                Intent i = new Intent(mContext, EditAccountActivity.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                i.putExtra("currentAccount", account);
+                                mContext.startActivity(i);
+                                break;
+                            case R.id.action_delete_account:
+                                fam.close(true);
+                                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+                                alertDialogBuilder.setMessage(mContext.getString(R.string.delete_account_warning));
+                                alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        try {
+                                            final Dao<Account, Integer> accountDao = GeneralUtils.getHelper(mContext).getAccountDao();
+                                            accountDao.delete(account);
+                                            Toast.makeText(mContext, mContext.getString(R.string.delete_account_success_message), Toast.LENGTH_SHORT).show();
+                                            dialogInterface.dismiss();
+                                            if(mContext instanceof MainActivity){
+                                                ((MainActivity)mContext).loadAccountsInformation();
+                                            }
+                                        } catch (SQLException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                                alertDialogBuilder.setNegativeButton(mContext.getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                });
+                                AlertDialog alertDialog = alertDialogBuilder.create();
+                                alertDialog.show();
+                                break;
                         }
-                    });
-                    alertDialogBuilder.setNegativeButton(mContext.getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
-                    return true;
-                default:
+                        return false;
+                    }
+                });
+                popup.show();
             }
-            return false;
-        }
+        });
     }
 
     @Override

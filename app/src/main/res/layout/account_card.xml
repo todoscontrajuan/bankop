@@ -49,15 +49,15 @@
 
             </LinearLayout>
 
-            <ImageView
+            <TextView
                 android:id="@+id/overflow"
                 android:layout_width="@dimen/ic_account_overflow_width"
                 android:layout_height="@dimen/ic_account_overflow_height"
                 android:layout_marginTop="@dimen/ic_account_overflow_margin_top"
                 android:layout_marginRight="@dimen/ic_account_overflow_margin_right"
                 android:layout_alignParentRight="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_more_vert_black_24dp" />
+                android:text="&#8942;"
+                android:textAppearance="?android:textAppearanceLarge" />
 
         </RelativeLayout>
 
