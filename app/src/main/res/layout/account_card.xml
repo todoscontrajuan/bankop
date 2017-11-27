@@ -19,7 +19,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="@dimen/card_padding">
@@ -54,8 +54,8 @@
                 android:layout_width="@dimen/ic_account_overflow_width"
                 android:layout_height="@dimen/ic_account_overflow_height"
                 android:layout_marginTop="@dimen/ic_account_overflow_margin_top"
-                android:layout_marginRight="@dimen/ic_account_overflow_margin_right"
-                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/ic_account_overflow_margin_right"
+                android:layout_alignParentEnd="true"
                 android:text="&#8942;"
                 android:textAppearance="?android:textAppearanceLarge" />
 
