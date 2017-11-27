@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -161,6 +162,7 @@ public class TransactionDetailsActivity extends AppCompatActivity {
                                     getApplicationContext().getString(R.string.delete_transaction_success_message),
                                     Toast.LENGTH_SHORT).show();
                             dialogInterface.dismiss();
+                            updateAccountBalance(transaction);
                             finish();
                         } catch (SQLException e) {
                             e.printStackTrace();
@@ -177,5 +179,33 @@ public class TransactionDetailsActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+    }
+
+    private void updateAccountBalance(Transaction transaction) {
+        try {
+            accountDao = GeneralUtils.getHelper(this).getAccountDao();
+            final QueryBuilder<Account, Integer> queryBuilder = accountDao.queryBuilder();
+            queryBuilder.where().eq("account_id", transaction.getTransactionSourceAccount().getAccountId());
+            final PreparedQuery<Account> preparedQuery = queryBuilder.prepare();
+            for (Account transactionAccount : accountDao.query(preparedQuery)) {
+                if(transaction.getTransactionType() == TransactionType.EXPENSE) {
+                    transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount());
+                } else {
+                    transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount());
+                }
+                accountDao.update(transactionAccount);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (GeneralUtils.databaseHelper != null) {
+            OpenHelperManager.releaseHelper();
+            GeneralUtils.databaseHelper = null;
+        }
     }
 }

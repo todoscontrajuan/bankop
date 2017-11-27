@@ -9,7 +9,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,6 +41,7 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
     private Dao<Account, Integer> accountDao;
     private List<Account> accountsList = null;
     private double oldAmount = 0;
+    private String oldAccountName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,7 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
         for (int j = 0; j < accountsList.size(); j++) {
             if (transaction.getTransactionSourceAccount().getAccountId() == accountsList.get(j).getAccountId()) {
                 order = j;
+                oldAccountName = accountsList.get(j).getAccountName();
             }
         }
         accountSpinner.setAdapter(adapter1);
@@ -202,21 +203,53 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
     }
 
     private void updateAccountInformation(String accountName, Transaction transaction) {
+        PreparedQuery<Account> preparedQuery = null;
         try {
             accountDao = GeneralUtils.getHelper(this).getAccountDao();
-            final QueryBuilder<Account, Integer> queryBuilder = accountDao.queryBuilder();
+            QueryBuilder<Account, Integer> queryBuilder = accountDao.queryBuilder();
             queryBuilder.where().eq("account_name", accountName);
-            final PreparedQuery<Account> preparedQuery = queryBuilder.prepare();
-            for (Account transactionAccount : accountDao.query(preparedQuery)) {
-                if(transaction.getTransactionType() == TransactionType.EXPENSE) {
-                    transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount() + oldAmount);
-                } else {
-                    transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount() - oldAmount);
-                }
-                accountDao.update(transactionAccount);
-            }
+            preparedQuery = queryBuilder.prepare();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        if(oldAccountName.equals(accountName)) {
+            try {
+                for (Account transactionAccount : accountDao.query(preparedQuery)) {
+                    if(transaction.getTransactionType() == TransactionType.EXPENSE) {
+                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount() + oldAmount);
+                    } else {
+                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount() - oldAmount);
+                    }
+                    accountDao.update(transactionAccount);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                for (Account transactionAccount : accountDao.query(preparedQuery)) {
+                    if(transaction.getTransactionType() == TransactionType.EXPENSE) {
+                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount());
+                    } else {
+                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount());
+                    }
+                    accountDao.update(transactionAccount);
+                }
+                QueryBuilder<Account, Integer> queryBuilder1 = accountDao.queryBuilder();
+                queryBuilder1.where().eq("account_name", oldAccountName);
+                PreparedQuery<Account> preparedQuery1 = queryBuilder1.prepare();
+                for (Account transactionAccount : accountDao.query(preparedQuery1)) {
+                    if(transaction.getTransactionType() == TransactionType.EXPENSE) {
+                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount());
+                    } else {
+                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount());
+                    }
+                    accountDao.update(transactionAccount);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
