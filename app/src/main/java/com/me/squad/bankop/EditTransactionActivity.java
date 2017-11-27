@@ -106,8 +106,8 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
         final EditText transactionNote = (EditText) findViewById(R.id.transaction_note);
         transactionNote.setText(transaction.getTransactionNote());
 
-        Button addTransactionButton = (Button) findViewById(R.id.edit_transaction_button);
-        addTransactionButton.setOnClickListener(new View.OnClickListener() {
+        Button editTransactionButton = (Button) findViewById(R.id.edit_transaction_button);
+        editTransactionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(transactionAmount.getText().toString().matches("") || transactionDate.getText().toString().matches("")) {

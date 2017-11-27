@@ -42,7 +42,7 @@
             android:id="@+id/edit_account_button"
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
-            android:text="@string/edit_account"
+            android:text="@string/save"
             android:layout_marginEnd="@dimen/buttons_margin_transaction_details"
             android:background="@color/colorPrimary"
             android:textColor="@color/button_elements_background_color"/>

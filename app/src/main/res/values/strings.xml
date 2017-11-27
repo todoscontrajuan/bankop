@@ -53,6 +53,7 @@
     <string name="edit_account_tittle">Editar cuenta</string>
     <string name="new_value">¿Ajustar monto?</string>
     <string name="edit_account_success_message">¡Cuenta editada!</string>
+    <string name="save">Guardar</string>
 
     <!-- Delete account -->
     <string name="delete_account_warning">¿Estas seguro de borrar esta cuenta? No puedes deshacer esta operación en el futuro.</string>
@@ -64,5 +65,8 @@
     <!-- Delete transaction -->
     <string name="delete_transaction_warning">¿Estas seguro de borrar esta transacción? No puedes deshacer esta operación en el futuro.</string>
     <string name="delete_transaction_success_message">¡Transacción eliminada!</string>
+    
+    <!-- Edit transfer -->
+    <string name="edit_transfer_title">Editar transferencia</string>
 
 </resources>
