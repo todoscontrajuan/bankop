@@ -187,13 +187,22 @@ public class TransactionDetailsActivity extends AppCompatActivity {
             queryBuilder.where().eq("account_id", transaction.getTransactionSourceAccount().getAccountId());
             final PreparedQuery<Account> preparedQuery = queryBuilder.prepare();
             for (Account transactionAccount : accountDao.query(preparedQuery)) {
-                if(transaction.getTransactionType() == TransactionType.EXPENSE) {
-                    transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount());
-                } else {
+                if(transaction.getTransactionType() == TransactionType.INCOME) {
                     transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount());
+                } else {
+                    transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount());
                 }
                 accountDao.update(transactionAccount);
             }
+            if(transaction.getTransactionDestinationAccount() != null) {
+                queryBuilder.where().eq("account_id", transaction.getTransactionDestinationAccount().getAccountId());
+                final PreparedQuery<Account> preparedQuery1 = queryBuilder.prepare();
+                for (Account transactionAccount : accountDao.query(preparedQuery1)) {
+                    transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount());
+                    accountDao.update(transactionAccount);
+                }
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
