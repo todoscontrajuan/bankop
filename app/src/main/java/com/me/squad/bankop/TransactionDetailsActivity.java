@@ -1,5 +1,7 @@
 package com.me.squad.bankop;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
@@ -146,7 +149,32 @@ public class TransactionDetailsActivity extends AppCompatActivity {
         deleteTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO Alert dialog for confirmation
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TransactionDetailsActivity.this);
+                alertDialogBuilder.setMessage(getApplicationContext().getString(R.string.delete_transaction_warning));
+                alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        try {
+                            final Dao<Transaction, Integer> transactionDao = GeneralUtils.getHelper(getApplicationContext()).getTransactionDao();
+                            transactionDao.delete(transaction);
+                            Toast.makeText(getApplicationContext(),
+                                    getApplicationContext().getString(R.string.delete_transaction_success_message),
+                                    Toast.LENGTH_SHORT).show();
+                            dialogInterface.dismiss();
+                            finish();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                alertDialogBuilder.setNegativeButton(getApplicationContext().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
     }

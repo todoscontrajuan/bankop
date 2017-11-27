@@ -61,4 +61,8 @@
     <!-- Edit transaction -->
     <string name="edit_transaction_title">Editar transacción</string>
 
+    <!-- Delete transaction -->
+    <string name="delete_transaction_warning">¿Estas seguro de borrar esta transacción? No puedes deshacer esta operación en el futuro.</string>
+    <string name="delete_transaction_success_message">¡Transacción eliminada!</string>
+
 </resources>
