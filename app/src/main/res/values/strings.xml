@@ -16,12 +16,13 @@
 
     <!-- Transaction details -->
     <string name="transaction_details_title">Detalles</string>
-    <string name="source_account">Origen</string>
-    <string name="destination_account">Destino</string>
+    <string name="source_account">Origen:</string>
+    <string name="destination_account">Destino:</string>
     <string-array name="transaction_types_array">
         <item>Gasto</item>
         <item>Ingreso</item>
     </string-array>
+    <string name="no_transactions_message">No hay transacciones para mostrar. Puedes agregar transacciones desde el menú principal.</string>
 
     <!-- Add account -->
     <string name="add_account_title">Agregar cuenta</string>
@@ -56,5 +57,8 @@
     <!-- Delete account -->
     <string name="delete_account_warning">¿Estas seguro de borrar esta cuenta? No puedes deshacer esta operación en el futuro.</string>
     <string name="delete_account_success_message">¡Cuenta eliminada!</string>
+
+    <!-- Edit transaction -->
+    <string name="edit_transaction_title">Editar transacción</string>
 
 </resources>

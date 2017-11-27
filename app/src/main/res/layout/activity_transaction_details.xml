@@ -54,26 +54,55 @@
         android:paddingStart="@dimen/margin_normal_texts"
         android:paddingEnd="@dimen/margin_normal_texts">
 
-        <TextView
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:id="@+id/account_source_transaction_details"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:text="@string/source_account"
-            android:layout_marginStart="16dp"
-            tools:text="Efectivo"/>
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/account_destination_transaction_details"
+            <TextView
+                android:id="@+id/account_source_transaction_details_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/source_account"
+                android:layout_marginStart="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/account_source_transaction_details_value"
+                android:layout_toEndOf="@id/account_source_transaction_details_label"
+                android:layout_marginStart="@dimen/card_margin"
+                tools:text="Efectivo"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:id="@+id/account_destination_transaction_details"
             android:layout_weight="1"
-            android:visibility="gone"
-            android:textStyle="bold"
-            android:text="@string/destination_account"
-            android:layout_marginStart="16dp"
-            tools:text="Debito"/>
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/account_destination_transaction_details_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/destination_account"
+                android:layout_marginStart="16dp"
+                tools:text="Debito"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/account_destination_transaction_details_value"
+                android:layout_toEndOf="@id/account_destination_transaction_details_label"
+                android:layout_marginStart="@dimen/card_margin"
+                tools:text="Debito"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

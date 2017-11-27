@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.j256.ormlite.dao.Dao;
@@ -24,6 +25,7 @@ public class TransactionListActivity extends AppCompatActivity {
 
     private ArrayList<Transaction> transactionsList = new ArrayList<>();
     private Account account;
+    private LinearLayout noTransactionsLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class TransactionListActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(account.getAccountName());
         }
 
+        noTransactionsLayout = (LinearLayout) findViewById(R.id.no_transactions_layout);
         loadTransactions();
     }
 
@@ -51,11 +54,23 @@ public class TransactionListActivity extends AppCompatActivity {
             for (Transaction transaction : transactionDao.query(preparedQuery)) {
                 transactionsList.add(transaction);
             }
+            if(transactionsList.size() == 0) {
+                noTransactionsLayout.setVisibility(View.VISIBLE);
+            } else {
+                noTransactionsLayout.setVisibility(View.GONE);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         ListView transactionsListView = (ListView) findViewById(R.id.transactions_list_view);
         TransactionsAdapter transactionsAdapter = new TransactionsAdapter(getApplicationContext(), transactionsList);
         transactionsListView.setAdapter(transactionsAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        transactionsList = new ArrayList<>();
+        loadTransactions();
     }
 }

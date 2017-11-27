@@ -3,74 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.me.squad.bankop.AddTransferActivity"
+    tools:context="com.me.squad.bankop.EditTransactionActivity"
     android:padding="16dp"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_transfer_title"
+        android:text="@string/edit_transaction_title"
         android:textStyle="bold"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/transaction_type_spinner"
+        android:layout_marginTop="@dimen/margin_big_texts">
+    </Spinner>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/transfer_amount"
+        android:id="@+id/transaction_amount"
         android:layout_marginTop="@dimen/margin_big_texts"
         android:ems="10"
         android:inputType="numberDecimal"
         android:hint="@string/amount"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Spinner
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/account_from_spinner"
-            android:layout_marginEnd="@dimen/margin_big_texts"
-            android:layout_marginTop="@dimen/margin_big_texts">
-        </Spinner>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:id="@+id/transfer_arrow"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_big_texts"
-            android:src="@drawable/ic_arrow_forward_black_24dp" />
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/account_to_spinner"
-            android:layout_marginStart="@dimen/margin_big_texts"
-            android:layout_marginTop="@dimen/margin_big_texts">
-        </Spinner>
-
-    </LinearLayout>
+        android:id="@+id/account_spinner"
+        android:layout_marginTop="@dimen/margin_big_texts">
+    </Spinner>
 
     <EditText
-        android:id="@+id/transfer_date"
+        android:id="@+id/transaction_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:focusable="false"
         android:clickable="true"
-        android:layout_marginTop="@dimen/margin_big_texts"
-        android:maxLines="1"/>
+        android:maxLines="1"
+        android:layout_marginTop="@dimen/margin_big_texts"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/transfer_note"
+        android:id="@+id/transaction_note"
         android:layout_marginTop="@dimen/margin_big_texts"
         android:ems="10"
-        android:hint="@string/note"
-        android:maxLines="1"/>
+        android:hint="@string/note"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,10 +64,10 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/add_transfer_button"
+            android:id="@+id/edit_transaction_button"
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
-            android:text="@string/add"
+            android:text="@string/edit_account"
             android:layout_marginEnd="@dimen/buttons_margin_transaction_details"
             android:background="@color/colorPrimary"
             android:textColor="@color/button_elements_background_color"/>
