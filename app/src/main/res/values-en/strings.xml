@@ -1,0 +1,71 @@
+<resources>
+    <!-- Main -->
+    <string name="app_name">BanKop: Expense manager</string>
+    <string name="accounts_title">My accounts</string>
+    <string name="menu_fab_label">What do you want to add?</string>
+    <string name="menu_fab_label_accounts">Account</string>
+    <string name="menu_fab_label_transactions">Record</string>
+    <string name="menu_fab_label_transfers">Transfer</string>
+    <string name="see_transactions">See records</string>
+    <string name="edit_account">Edit</string>
+    <string name="delete_account">Delete</string>
+    <string name="image_description">Image</string>
+    <string name="no_accounts_message">You don\'t have any account, add one from the awesome plus menu!</string>
+    <string name="no_accounts_error_message">You need one account to use that option.</string>
+    <string name="no_enough_accounts_error_message">You need at least two accounts to use that option.</string>
+
+    <!-- Transaction details -->
+    <string name="transaction_details_title">Details</string>
+    <string name="source_account">Source:</string>
+    <string name="destination_account">Destination:</string>
+    <string-array name="transaction_types_array">
+        <item>Expense</item>
+        <item>Income</item>
+    </string-array>
+    <string name="no_transactions_message">There are no records to show. You can add them from the main menu.</string>
+
+    <!-- Add account -->
+    <string name="add_account_title">Add account</string>
+    <string name="account_name">Account name</string>
+    <string name="initial_value">Initial balance</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="fields_error_message">There are needed fields that are empty.</string>
+    <string name="accounts_success_message">Account added!</string>
+
+    <!-- Add transaction -->
+    <string name="add_transaction_title">Add record</string>
+    <string name="amount">Amount</string>
+    <string-array name="test_accounts">
+        <item>Cash</item>
+        <item>Debit</item>
+    </string-array>
+    <string name="note">Note…</string>
+    <string name="transactions_success_message">Record saved!</string>
+
+    <!-- Add transfer -->
+    <string name="add_transfer_title">Add transfer</string>
+    <string name="same_account_error">Accounts must be different to perform transfer.</string>
+    <string name="transfers_success_message">Transfer saved!</string>
+
+    <!-- Edit account -->
+    <string name="edit_account_tittle">Edit account</string>
+    <string name="new_value">New balance?</string>
+    <string name="edit_account_success_message">Account saved!</string>
+    <string name="save">Save</string>
+
+    <!-- Delete account -->
+    <string name="delete_account_warning">Are you sure? You can\'t undo this action later.</string>
+    <string name="delete_account_success_message">Account deleted!</string>
+
+    <!-- Edit transaction -->
+    <string name="edit_transaction_title">Edit record</string>
+
+    <!-- Delete transaction -->
+    <string name="delete_transaction_warning">Are you sure? You can\'t undo this action later.</string>
+    <string name="delete_transaction_success_message">Record deleted!</string>
+    
+    <!-- Edit transfer -->
+    <string name="edit_transfer_title">Edit transfer</string>
+
+</resources>

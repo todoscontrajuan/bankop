@@ -78,7 +78,7 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
         Date defaultDate = new Date();
         transactionDate.setText(GeneralUtils.formatTime(defaultDate));
         calendar = Calendar.getInstance();
-        calendar.set(defaultDate.getYear(), defaultDate.getMonth(), defaultDate.getDay());
+        calendar.setTime(defaultDate);
 
         Button cancelButton = (Button) findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {

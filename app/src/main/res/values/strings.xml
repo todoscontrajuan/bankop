@@ -1,6 +1,6 @@
 <resources>
     <!-- Main -->
-    <string name="app_name">BanKop</string>
+    <string name="app_name">BanKop: Vigilante de gastos</string>
     <string name="accounts_title">Mis cuentas</string>
     <string name="menu_fab_label">¿Qué quieres agregar?</string>
     <string name="menu_fab_label_accounts">Cuenta</string>
