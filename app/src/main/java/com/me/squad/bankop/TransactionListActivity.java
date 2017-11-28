@@ -14,12 +14,10 @@ import com.j256.ormlite.stmt.Where;
 import com.me.squad.bankop.adapter.TransactionsAdapter;
 import com.me.squad.bankop.model.Account;
 import com.me.squad.bankop.model.Transaction;
-import com.me.squad.bankop.model.TransactionType;
 import com.me.squad.bankop.utils.GeneralUtils;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class TransactionListActivity extends AppCompatActivity {
 

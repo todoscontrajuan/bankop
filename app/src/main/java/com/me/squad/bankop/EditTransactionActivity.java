@@ -1,7 +1,6 @@
 package com.me.squad.bankop;
 
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -84,15 +82,16 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
         accountSpinner.setSelection(order);
 
         transactionDate = (EditText) findViewById(R.id.transaction_date);
+        calendar = Calendar.getInstance();
         transactionDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDatePickerDialog();
+                DatePickerFragment newFragment = GeneralUtils.prepareDatePickerDialog(transactionDate, calendar);
+                newFragment.show(getFragmentManager(), "datePicker");
             }
         });
         Date defaultDate = transaction.getTransactionDate();
         transactionDate.setText(GeneralUtils.formatTime(defaultDate));
-        calendar = Calendar.getInstance();
         calendar.setTime(defaultDate);
 
         Button cancelButton = (Button) findViewById(R.id.cancel_button);
@@ -171,21 +170,6 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         // Nothing
-    }
-
-    private void showDatePickerDialog() {
-        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                // +1 because january is zero
-                final String selectedDate = day + "/" + (month+1) + "/" + year;
-                transactionDate.setText(selectedDate);
-
-                calendar = Calendar.getInstance();
-                calendar.set(year, month, day);
-            }
-        });
-        newFragment.show(getFragmentManager(), "datePicker");
     }
 
     private List<String> getAccountsInformation() {
