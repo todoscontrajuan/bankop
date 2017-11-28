@@ -46,6 +46,7 @@ public class TransactionListActivity extends AppCompatActivity {
             Dao<Transaction, Integer> transactionDao = GeneralUtils.getHelper(getApplicationContext()).getTransactionDao();
             QueryBuilder<Transaction, Integer> queryBuilder = transactionDao.queryBuilder();
             Where<Transaction, Integer> where = queryBuilder.where();
+            // Transfers are shown on both accounts, max transaction number to show is 60
             where.or(where.eq("transaction_source", account.getAccountId()),
                     where.eq("transaction_destination", account.getAccountId()));
             queryBuilder.orderBy("transaction_date", false);

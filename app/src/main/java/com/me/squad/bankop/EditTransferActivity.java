@@ -59,6 +59,7 @@ public class EditTransferActivity extends AppCompatActivity {
         final Spinner sourceAccountSpinner = (Spinner) findViewById(R.id.account_from_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, accountNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Get the order of the account in the list to set the spinner
         int order = 0;
         for (int j = 0; j < accountsList.size(); j++) {
             if (transaction.getTransactionSourceAccount().getAccountId() == accountsList.get(j).getAccountId()) {
@@ -72,6 +73,7 @@ public class EditTransferActivity extends AppCompatActivity {
         final Spinner destinationAccountSpinner = (Spinner) findViewById(R.id.account_to_spinner);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, accountNames);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Get the order of the account in the list to set the spinner
         order = 0;
         for (int j = 0; j < accountsList.size(); j++) {
             if (transaction.getTransactionDestinationAccount().getAccountId() == accountsList.get(j).getAccountId()) {
@@ -189,6 +191,7 @@ public class EditTransferActivity extends AppCompatActivity {
     private void updateAccountInformation(String sourceAccountName, String destinationAccountName, Transaction transaction) {
         try {
             accountDao = GeneralUtils.getHelper(this).getAccountDao();
+            // We should update every balance individually so we don't miss any change
 
             // Source account
             final QueryBuilder<Account, Integer> queryBuilder = accountDao.queryBuilder();

@@ -186,6 +186,7 @@ public class TransactionDetailsActivity extends AppCompatActivity {
             final QueryBuilder<Account, Integer> queryBuilder = accountDao.queryBuilder();
             queryBuilder.where().eq("account_id", transaction.getTransactionSourceAccount().getAccountId());
             final PreparedQuery<Account> preparedQuery = queryBuilder.prepare();
+            // Update every balance based on the transaction type to support all of them
             for (Account transactionAccount : accountDao.query(preparedQuery)) {
                 if(transaction.getTransactionType() == TransactionType.INCOME) {
                     transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount());

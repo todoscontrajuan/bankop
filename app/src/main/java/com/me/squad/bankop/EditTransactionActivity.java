@@ -71,6 +71,7 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
         final Spinner accountSpinner = (Spinner) findViewById(R.id.account_spinner);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, accountNames);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Get the order of the account in the list to set the spinner
         int order = 0;
         for (int j = 0; j < accountsList.size(); j++) {
             if (transaction.getTransactionSourceAccount().getAccountId() == accountsList.get(j).getAccountId()) {
@@ -197,6 +198,7 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
             e.printStackTrace();
         }
 
+        // Check which balance should be updated based on the account change
         if(oldAccountName.equals(accountName)) {
             try {
                 for (Account transactionAccount : accountDao.query(preparedQuery)) {
