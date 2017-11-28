@@ -51,6 +51,7 @@ public class TransactionListActivity extends AppCompatActivity {
             where.or(where.eq("transaction_source", account.getAccountId()),
                     where.eq("transaction_destination", account.getAccountId()));
             queryBuilder.orderBy("transaction_date", false);
+            queryBuilder.limit(60);
             PreparedQuery<Transaction> preparedQuery = queryBuilder.prepare();
             for (Transaction transaction : transactionDao.query(preparedQuery)) {
                 transactionsList.add(transaction);
