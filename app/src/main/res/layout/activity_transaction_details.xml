@@ -90,9 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="@string/destination_account"
-                android:layout_marginStart="16dp"
-                tools:text="Debito"/>
+                android:text="@string/destination_account"/>
 
             <TextView
                 android:layout_width="wrap_content"

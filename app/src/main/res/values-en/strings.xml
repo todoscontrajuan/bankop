@@ -17,7 +17,7 @@
     <!-- Transaction details -->
     <string name="transaction_details_title">Details</string>
     <string name="source_account">Source:</string>
-    <string name="destination_account">Destination:</string>
+    <string name="destination_account">Target:</string>
     <string-array name="transaction_types_array">
         <item>Expense</item>
         <item>Income</item>
