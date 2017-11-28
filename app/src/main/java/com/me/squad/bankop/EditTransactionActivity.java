@@ -40,6 +40,7 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
     private List<Account> accountsList = null;
     private double oldAmount = 0;
     private String oldAccountName;
+    private TransactionType oldTransactionType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,8 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         transactionTypeSpinner.setOnItemSelectedListener(this);
         transactionTypeSpinner.setAdapter(adapter);
-        transactionTypeSpinner.setSelection(transaction.getTransactionType().ordinal());
+        oldTransactionType = transaction.getTransactionType();
+        transactionTypeSpinner.setSelection(oldTransactionType.ordinal());
 
         List<String> accountNames = getAccountsInformation();
 
@@ -198,14 +200,22 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
             e.printStackTrace();
         }
 
-        // Check which balance should be updated based on the account change
+        // Check which balance should be updated based on the account change and type change
         if(oldAccountName.equals(accountName)) {
             try {
                 for (Account transactionAccount : accountDao.query(preparedQuery)) {
-                    if(transaction.getTransactionType() == TransactionType.EXPENSE) {
-                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount() + oldAmount);
+                    if(transaction.getTransactionType() != oldTransactionType) {
+                        if(transaction.getTransactionType() == TransactionType.EXPENSE) {
+                            transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount() - oldAmount);
+                        } else {
+                            transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount() + oldAmount);
+                        }
                     } else {
-                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount() - oldAmount);
+                        if(transaction.getTransactionType() == TransactionType.EXPENSE) {
+                            transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount() + oldAmount);
+                        } else {
+                            transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount() - oldAmount);
+                        }
                     }
                     accountDao.update(transactionAccount);
                 }
@@ -226,10 +236,18 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
                 queryBuilder1.where().eq("account_name", oldAccountName);
                 PreparedQuery<Account> preparedQuery1 = queryBuilder1.prepare();
                 for (Account transactionAccount : accountDao.query(preparedQuery1)) {
-                    if(transaction.getTransactionType() == TransactionType.EXPENSE) {
-                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount());
+                    if(transaction.getTransactionType() != oldTransactionType) {
+                        if(transaction.getTransactionType() == TransactionType.EXPENSE) {
+                            transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount());
+                        } else {
+                            transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount());
+                        }
                     } else {
-                        transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount());
+                        if(transaction.getTransactionType() == TransactionType.EXPENSE) {
+                            transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() + transaction.getTransactionAmount());
+                        } else {
+                            transactionAccount.setAccountBalance(transactionAccount.getAccountBalance() - transaction.getTransactionAmount());
+                        }
                     }
                     accountDao.update(transactionAccount);
                 }
