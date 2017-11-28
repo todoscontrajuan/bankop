@@ -17,13 +17,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".TransactionListActivity" />
-        <activity android:name=".TransactionDetailsActivity" />
-        <activity android:name=".AddAccountActivity" />
-        <activity android:name=".AddTransactionActivity" />
-        <activity android:name=".AddTransferActivity" />
-        <activity android:name=".EditAccountActivity" />
-        <activity android:name=".EditTransactionActivity" />
-        <activity android:name=".EditTransferActivity"></activity>
+        <activity android:name=".TransactionDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddAccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddTransactionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddTransferActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EditAccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EditTransactionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EditTransferActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
