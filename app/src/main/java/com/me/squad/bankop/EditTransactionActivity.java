@@ -112,7 +112,8 @@ public class EditTransactionActivity extends AppCompatActivity implements Adapte
         editTransactionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(transactionAmount.getText().toString().matches("") || transactionDate.getText().toString().matches("")) {
+                if(transactionAmount.getText().toString().matches("") || transactionDate.getText().toString().matches("") ||
+                        !GeneralUtils.isDouble(transactionAmount.getText().toString())) {
                     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(EditTransactionActivity.this);
                     alertDialogBuilder.setMessage(getString(R.string.fields_error_message));
                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {

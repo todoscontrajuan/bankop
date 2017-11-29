@@ -49,7 +49,8 @@ public class EditAccountActivity extends AppCompatActivity {
         editAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(accountName.getText().toString().matches("") || newValue.getText().toString().matches("")) {
+                if(accountName.getText().toString().matches("") || newValue.getText().toString().matches("") ||
+                        !GeneralUtils.isDouble(newValue.getText().toString())) {
                     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(EditAccountActivity.this);
                     alertDialogBuilder.setMessage(getString(R.string.fields_error_message));
                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {

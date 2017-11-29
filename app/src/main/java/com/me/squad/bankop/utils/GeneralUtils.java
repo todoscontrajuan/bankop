@@ -24,11 +24,11 @@ public class GeneralUtils {
 
     // Date format
     public static String formatTime(Date dateObject) {
-        SimpleDateFormat timeFormat;
-        if (systemLanguage.equals("es")) {
-            timeFormat = new SimpleDateFormat("dd/MM/yyyy");
-        } else {
-            timeFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("MM/dd/yyyy");
+        if (systemLanguage != null) {
+            if (systemLanguage.equals("es")) {
+                timeFormat = new SimpleDateFormat("dd/MM/yyyy");
+            }
         }
         return timeFormat.format(dateObject);
     }
@@ -58,5 +58,15 @@ public class GeneralUtils {
             }
         });
         return newFragment;
+    }
+
+    // Valid amount checking
+    public static boolean isDouble(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

@@ -18,7 +18,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/account_name"
         android:layout_marginTop="16dp"
-        android:hint="@string/account_name"/>
+        android:hint="@string/account_name"
+        android:inputType="text"
+        android:maxLines="1"
+        android:maxLength="30"/>
 
     <EditText
         android:layout_width="match_parent"

@@ -1,6 +1,6 @@
 <resources>
     <!-- Main -->
-    <string name="app_name">BanKop</string>
+    <string name="app_name">Bankop</string>
     <string name="accounts_title">Mis cuentas</string>
     <string name="menu_fab_label">¿Qué quieres agregar?</string>
     <string name="menu_fab_label_accounts">Cuenta</string>
@@ -30,7 +30,7 @@
     <string name="initial_value">Monto inicial</string>
     <string name="add">Agregar</string>
     <string name="cancel">Cancelar</string>
-    <string name="fields_error_message">Hay campos necesarios que no han sido llenados.</string>
+    <string name="fields_error_message">Hay campos necesarios que no han sido llenados y/o llenados incorrectamente.</string>
     <string name="accounts_success_message">¡Cuenta agregada!</string>
 
     <!-- Add transaction -->

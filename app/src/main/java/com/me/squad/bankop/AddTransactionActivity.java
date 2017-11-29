@@ -91,7 +91,8 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
             @Override
             public void onClick(View view) {
                 Transaction transaction = new Transaction();
-                if(transactionAmount.getText().toString().matches("") || transactionDate.getText().toString().matches("")) {
+                if(transactionAmount.getText().toString().matches("") || transactionDate.getText().toString().matches("") ||
+                        !GeneralUtils.isDouble(transactionAmount.getText().toString())) {
                     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(AddTransactionActivity.this);
                     alertDialogBuilder.setMessage(getString(R.string.fields_error_message));
                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {

@@ -46,7 +46,8 @@ public class AddAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final Account account = new Account();
-                if(accountName.getText().toString().matches("") || initialValue.getText().toString().matches("")) {
+                if(accountName.getText().toString().matches("") || initialValue.getText().toString().matches("") ||
+                        !GeneralUtils.isDouble(initialValue.getText().toString())) {
                     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(AddAccountActivity.this);
                     alertDialogBuilder.setMessage(getString(R.string.fields_error_message));
                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {

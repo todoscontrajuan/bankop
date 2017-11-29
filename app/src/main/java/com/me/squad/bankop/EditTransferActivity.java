@@ -112,7 +112,8 @@ public class EditTransferActivity extends AppCompatActivity {
         editTransferButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(transferAmount.getText().toString().matches("") || transferDate.getText().toString().matches("")) {
+                if(transferAmount.getText().toString().matches("") || transferDate.getText().toString().matches("") ||
+                        !GeneralUtils.isDouble(transferAmount.getText().toString())) {
                     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(EditTransferActivity.this);
                     alertDialogBuilder.setMessage(getString(R.string.fields_error_message));
                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {

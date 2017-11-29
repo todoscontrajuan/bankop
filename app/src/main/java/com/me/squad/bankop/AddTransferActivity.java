@@ -87,7 +87,8 @@ public class AddTransferActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Transaction transaction = new Transaction();
-                if(transferAmount.getText().toString().matches("") || transferDate.getText().toString().matches("")) {
+                if(transferAmount.getText().toString().matches("") || transferDate.getText().toString().matches("") ||
+                        !GeneralUtils.isDouble(transferAmount.getText().toString())) {
                     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(AddTransferActivity.this);
                     alertDialogBuilder.setMessage(getString(R.string.fields_error_message));
                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {

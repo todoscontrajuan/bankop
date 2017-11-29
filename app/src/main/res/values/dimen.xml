@@ -3,6 +3,7 @@
     <!-- Common values -->
     <dimen name="margin_normal_texts">8dp</dimen>
     <dimen name="margin_big_texts">16dp</dimen>
+    <dimen name="margin_spinners">24dp</dimen>
     <dimen name="margin_big_big_texts">32dp</dimen>
 
     <!-- MainActivity values -->

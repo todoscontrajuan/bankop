@@ -1,6 +1,6 @@
 <resources>
     <!-- Main -->
-    <string name="app_name">BanKop</string>
+    <string name="app_name">Bankop</string>
     <string name="accounts_title">My accounts</string>
     <string name="menu_fab_label">What do you want to add?</string>
     <string name="menu_fab_label_accounts">Account</string>
