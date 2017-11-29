@@ -38,7 +38,7 @@
         android:layout_marginTop="@dimen/margin_normal_texts">
 
         <Spinner
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/spinner_width"
             android:layout_height="wrap_content"
             android:id="@+id/account_from_spinner"
             android:layout_marginEnd="@dimen/margin_big_texts"
@@ -54,7 +54,7 @@
             android:contentDescription="@string/image_description" />
 
         <Spinner
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/spinner_width"
             android:layout_height="wrap_content"
             android:id="@+id/account_to_spinner"
             android:layout_marginStart="@dimen/margin_big_texts"

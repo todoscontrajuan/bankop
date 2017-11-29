@@ -3,6 +3,7 @@
     <!-- Common values -->
     <dimen name="margin_normal_texts">8dp</dimen>
     <dimen name="margin_big_texts">16dp</dimen>
+    <dimen name="margin_spinners">24dp</dimen>
     <dimen name="margin_big_big_texts">32dp</dimen>
 
     <!-- MainActivity values -->
@@ -29,5 +30,8 @@
     <dimen name="buttons_margin_transaction_details">20dp</dimen>
     <dimen name="button_width">90dp</dimen>
     <dimen name="button_height">40dp</dimen>
+
+    <!-- Transfers -->
+    <dimen name="spinner_width">100dp</dimen>
 
 </resources>

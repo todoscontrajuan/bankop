@@ -30,7 +30,7 @@
     <string name="initial_value">Initial balance</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
-    <string name="fields_error_message">There are needed fields that are empty.</string>
+    <string name="fields_error_message">There are needed fields that are empty or incorrect.</string>
     <string name="accounts_success_message">Account added!</string>
 
     <!-- Add transaction -->
