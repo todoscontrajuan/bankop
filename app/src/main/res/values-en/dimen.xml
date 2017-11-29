@@ -31,7 +31,4 @@
     <dimen name="button_width">90dp</dimen>
     <dimen name="button_height">40dp</dimen>
 
-    <!-- Transfers -->
-    <dimen name="spinner_width">100dp</dimen>
-
 </resources>
